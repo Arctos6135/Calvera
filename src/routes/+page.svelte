@@ -1,2 +1,13 @@
-<h1>Welcome to Kocab!</h1>
-<p>Currently under development, please check us out at <a href="https://github.com/Arctos6135/Kocab">the Kocab github</a>.</p>
+<script lang="ts">
+    import AddForm from "$lib/components/AddForm.svelte";
+    import FormsList from "$lib/components/FormsList.svelte";
+    import ResponseList from "$lib/components/ResponseList.svelte";
+</script>
+
+<div>
+    <FormsList/>
+    <div>
+        <AddForm/>
+    </div>
+    <ResponseList/>
+</div>
