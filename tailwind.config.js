@@ -9,8 +9,10 @@ export default {
         hover: "#1b284f",
         click: "#121c38",
       },
+
       dropShadow: {
-        "btn-hover": "2px 2px 2px rgba(0, 0, 0, .5)"
+        "btn-hover": "2px 2px 2px rgba(0, 0, 0, .5)",
+        "nav": "0px 2px 2px rgba(0, 0, 0, .5)"
       }
     },
   },

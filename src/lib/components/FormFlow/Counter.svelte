@@ -5,8 +5,13 @@
     export let label: string;
 
     export let component: Counter;
-    const initialValue = component.initialValue || 0;
     // Why is zero falsy 😢
+    // Anyways, the following ternary operators just set
+    // default values.
+    // The initial value is set to component.initialValue OR component.min OR 0.
+    // All the ternary operations are due to zero being falsy 😔
+    // If anyone has a better solution, please suggest 😊
+    const initialValue = (component.initialValue !== undefined ? component.initialValue : (component.min === undefined ? 0 : component.min));
     const min = (component.min == undefined && Number.MIN_SAFE_INTEGER || component.min) as number;
     const max = (component.max == undefined && Number.MAX_SAFE_INTEGER || component.max) as number;
     const hasButtons = component.hasButtons || true;
@@ -46,7 +51,7 @@
     }
 </script>
 
-<div class="px-5">
+<div>
     <div class="flex justify-between items-center">
         <span
             class="text-xl"
@@ -64,11 +69,11 @@
             />
             <button
                 on:click={() => incrementCount(-1)}
-                class="bg-primary rounded-xl px-4 py-2 text-white font-bold hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click"
+                class="bg-primary rounded-xl px-4 py-2 text-white font-bold clickable"
             >-</button>
             <button
                 on:click={() => incrementCount(1)}
-                class="bg-primary rounded-xl px-4 py-2 text-white font-bold hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click"
+                class="bg-primary rounded-xl px-4 py-2 text-white font-bold clickable"
             >+</button>
         </span>
     </div>

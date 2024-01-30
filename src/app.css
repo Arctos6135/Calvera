@@ -10,3 +10,11 @@
 .remove-arrow {
     -moz-appearance: textfield;
 }
+
+.clickable {
+    @apply hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click;
+}
+
+* {
+    color: white;
+}
