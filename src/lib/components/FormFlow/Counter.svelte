@@ -1,6 +1,9 @@
 <script lang="ts">
         import type { Counter } from "$lib/types";
 
+    
+    export let label: string;
+
     export let component: Counter;
     const initialValue = component.initialValue || 0;
     // Why is zero falsy 😢
@@ -47,7 +50,7 @@
     <div class="flex justify-between items-center">
         <span
             class="text-xl"
-        >{component.label}</span>
+        >{label}</span>
         <span>
                 <input
                 type="number"

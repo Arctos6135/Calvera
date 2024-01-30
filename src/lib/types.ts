@@ -22,7 +22,6 @@ export type Input = {
     type: "input";
     label: string;
     component: Component;
-    //section: string;
 };
 
 export type Component = Counter | Checkbox | Dropdown | Textbox;
@@ -45,7 +44,6 @@ export type Alliance = [Team, Team, Team]
 export type Counter = {
     type: "Counter",
     id: string;
-    label: string;
     hasButtons?: boolean;
     initialValue?: number;
     min?: number;
