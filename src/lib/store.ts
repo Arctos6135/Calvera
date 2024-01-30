@@ -1,5 +1,5 @@
 import { derived, get, writable } from "svelte/store";
-import type { Form, Response, Team, Match, Field } from "$lib/types";
+import type { Form, Response, Team, Match } from "$lib/types";
 import { persisted } from "svelte-local-storage-store";
 
 //Details of which type of form is being used
@@ -20,12 +20,6 @@ export const code = persisted<number | null>("code", null);
 //Structured as a map of ids to responses
 export const activeResponses = persisted<Record<number, Response>>(
   "activeResponses",
-  {}
-);
-
-//something to do with grid, shouldn't be necessary this year
-export const fields = persisted<Record<number, Record<string, Field>>>(
-  "fields",
   {}
 );
 

@@ -24,10 +24,10 @@ export type Input = {
     type: "input";
     label: string;
     component: Component;
-    section: string;
+    //section: string;
 };
 
-export type Component = {}
+export type Component = Counter | Checkbox | Dropdown | Textbox;
 
 export type Team = {
     number: number;
@@ -44,3 +44,29 @@ export type Match = {
 
 export type Alliance = [Team, Team, Team]
 
+export type Counter = {
+    type: "Counter",
+    id: string;
+    hasButtons?: boolean;
+    initialValue?: number;
+    min?: number;
+    max?: number;
+}
+
+export type Checkbox = {
+    type: "Checkbox",
+    id: string,
+    initialValue?: boolean,
+}
+
+export type Dropdown = {
+    type: "Dropdown",
+    id: string,
+    options: string[]
+}
+
+export type Textbox = {
+    type: "Textbox",
+    id: string,
+    maxlength: number,
+}
