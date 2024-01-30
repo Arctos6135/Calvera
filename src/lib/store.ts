@@ -1,6 +1,6 @@
-import { derived, get, writable } from "svelte/store";
+import { writable } from "svelte/store";
 import type { Form, Response, Team, Match } from "$lib/types";
-import { persisted } from "svelte-local-storage-store";
+import { persisted } from "svelte-persisted-store";
 
 //Details of which type of form is being used
 export const form = persisted<Form | null>("form", null);
