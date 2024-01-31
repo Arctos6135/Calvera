@@ -69,11 +69,11 @@
             />
             <button
                 on:click={() => incrementCount(-1)}
-                class="bg-primary rounded-xl px-4 py-2 text-white font-bold clickable"
+                class="button clickable"
             >-</button>
             <button
                 on:click={() => incrementCount(1)}
-                class="bg-primary rounded-xl px-4 py-2 text-white font-bold clickable"
+                class="button clickable"
             >+</button>
         </span>
     </div>
