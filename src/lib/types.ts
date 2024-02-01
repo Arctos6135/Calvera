@@ -39,7 +39,7 @@ export type Match = {
     blue_score?: number;
 }
 
-export type Alliance = [Team, Team, Team]
+export type Alliance = [number, number, number]
 
 export type Counter = {
     type: "Counter",
