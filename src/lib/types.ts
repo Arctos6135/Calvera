@@ -1,5 +1,3 @@
-
-
 export type Response = {
     data: Record<string, string | number>;
     id: number;
@@ -24,7 +22,6 @@ export type Input = {
     type: "input";
     label: string;
     component: Component;
-    //section: string;
 };
 
 export type Component = Counter | Checkbox | Dropdown | Textbox;

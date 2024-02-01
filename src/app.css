@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.remove-arrow {
+    -moz-appearance: textfield;
+}
+
+.button {
+    @apply bg-primary rounded-xl px-4 py-2 text-white font-bold;
+}
+
+.clickable {
+    @apply hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click;
+}
+
+* {
+    color: white;
+}

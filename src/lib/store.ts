@@ -1,4 +1,4 @@
-import { derived, get, writable } from "svelte/store";
+import { writable } from "svelte/store";
 import type { Form, Response, Team, Match } from "$lib/types";
 import { persisted } from "../../node_modules/svelte-local-storage-store/dist/index";
 

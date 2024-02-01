@@ -13,18 +13,18 @@
     $: responses = Object.values($activeResponses);
 </script>
 
-<div class="p-4">
-    <span class="text-2xl text-text">Forms</span>
+<div class="py-4">
+    <span class="text-2xl text-text block mb-2 font-bold">Forms</span>
     <hr class="text-text/50" />
-    <ul class="mt-2">
+    <ul class="">
       {#each responses as response (response.id)}
         <li class="flex mt-1">
           <span class="flex-auto">
             <button
               on:click={() => setResponse(response.id)}
               class="text-secondary hover:text-primary"
-              >Match: {response.match} Team: {response.team}</button
-            >
+              >Match: {response.match} Team: {response.team}
+            </button>
           </span>
           <span>
             <button
