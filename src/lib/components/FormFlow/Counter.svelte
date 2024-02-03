@@ -4,6 +4,7 @@
     
     export let label: string;
 
+    // Set default values if fields are left as undefined
     export let component: Counter;
     const min = component.min ?? 0;
     const max = component.max ?? 256;
@@ -16,6 +17,10 @@
     // is undefined!
     export let error: string | undefined = undefined;
 
+    /**
+     * Ensure that the input is an actual number,
+     * not less than min, and not greater than max.
+     */
     const validateInput = () => {
         if (!Number.isInteger(count)) {
             // If the inputted value is NOT a number, this will set the counter
@@ -52,6 +57,7 @@
             class="text-xl min-w-max"
         >{label}</span>
         <span class="grid grid-cols-counter grid-rows-1 gap-1">
+            <!-- Primary input fields -->
             <input
                 type="number"
                 pattern="[0-9]*"
@@ -62,6 +68,8 @@
                 on:blur={validateInput}
                 class="bg-primary rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
             />
+
+            <!-- Add and subtract buttons -->
             <button
                 on:click={() => incrementCount(-1)}
                 class="button clickable"

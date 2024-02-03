@@ -1,5 +1,6 @@
 <script lang="ts">
     import AddForm from "$lib/components/AddForm.svelte";
+	import Checkbox from "$lib/components/FormFlow/Checkbox.svelte";
 	import Counter from "$lib/components/FormFlow/Counter.svelte";
 	import Dropdown from "$lib/components/FormFlow/Dropdown.svelte";
     import FormsList from "$lib/components/FormsList.svelte";

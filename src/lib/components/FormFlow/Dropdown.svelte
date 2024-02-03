@@ -8,6 +8,9 @@
     // when declaring the component
     export let choice: string;
 
+    // Wrap the validator in another function
+    // so we can update the error string in this 
+    // which is returned by the validator component.
     let error: string | undefined;
     let runValidator = () => {
         error = component.validator(choice);
@@ -19,6 +22,8 @@
         <span
             class="text-xl min-w-max"
         >{label}</span>
+
+        <!-- Display the dropdown menu if manual is false -->
         {#if !component.manual}
             <select
                 bind:value={choice}
@@ -32,6 +37,8 @@
                 {/each}
             </select>
         {:else}
+        
+        <!-- Display a text input field if manual is true -->
             <input
                 type="text"
                 bind:value={choice}

@@ -8,6 +8,7 @@ export default {
         primary: "#162244",
         hover: "#1b284f",
         click: "#121c38",
+        enabled: "#1d2e5c",
       },
 
       dropShadow: {
@@ -21,6 +22,10 @@ export default {
 
       minWidth: {
         "dropdown": "max(100vw, max-content)",
+      },
+
+      borderWidth: {
+        '3': '3px',
       }
     },
   },
