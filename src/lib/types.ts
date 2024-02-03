@@ -59,7 +59,20 @@ export type Checkbox = {
 export type Dropdown = {
     type: "Dropdown",
     id: string,
-    options: string[]
+    options: string[],
+
+    // When this value is true, an input
+    // box appears instead of a dropbox
+    // allowing the user to type in whatever
+    // they wish.
+    manual?: boolean,
+
+    // A function that will validate the input
+    // and return either an error string
+    // or undefined if everything is valid.
+    // Note: If manual is enabled, this function
+    // is only ran when the input textbox loses focus.
+    validator: (choice: string) => string | undefined,
 }
 
 export type Textbox = {

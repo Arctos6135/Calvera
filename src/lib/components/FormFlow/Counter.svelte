@@ -5,16 +5,10 @@
     export let label: string;
 
     export let component: Counter;
-    // Why is zero falsy 😢
-    // Anyways, the following ternary operators just set
-    // default values.
-    // The initial value is set to component.initialValue OR component.min OR 0.
-    // All the ternary operations are due to zero being falsy 😔
-    // If anyone has a better solution, please suggest 😊
-    const initialValue = (component.initialValue !== undefined ? component.initialValue : (component.min === undefined ? 0 : component.min));
-    const min = (component.min == undefined && Number.MIN_SAFE_INTEGER || component.min) as number;
-    const max = (component.max == undefined && Number.MAX_SAFE_INTEGER || component.max) as number;
-    const hasButtons = component.hasButtons || true;
+    const min = component.min ?? 0;
+    const max = component.max ?? 256;
+    const initialValue = component.initialValue ?? min;
+    const hasButtons = component.hasButtons ?? true;
 
     export let count = initialValue;
     
@@ -23,8 +17,9 @@
     export let error: string | undefined = undefined;
 
     const validateInput = () => {
-        console.log("Yessir!")
         if (!Number.isInteger(count)) {
+            // If the inputted value is NOT a number, this will set the counter
+            // to its initial value
             if (count == undefined || count == null || count.toString().trim().length == 0) {
                 error = undefined;
                 count = initialValue;
@@ -52,12 +47,12 @@
 </script>
 
 <div>
-    <div class="flex justify-between items-center">
+    <div class="flex items-center justify-between gap-2">
         <span
-            class="text-xl"
+            class="text-xl min-w-max"
         >{label}</span>
-        <span>
-                <input
+        <span class="grid grid-cols-counter grid-rows-1 gap-1">
+            <input
                 type="number"
                 pattern="[0-9]*"
                 placeholder={initialValue.toString()}
@@ -65,7 +60,7 @@
                 max={max}
                 bind:value={count}
                 on:blur={validateInput}
-                class="bg-primary rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover"
+                class="bg-primary rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
             />
             <button
                 on:click={() => incrementCount(-1)}
