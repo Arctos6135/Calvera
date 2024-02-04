@@ -22,8 +22,9 @@
             on:click={() => setResponse(response.id)}
           >
           <!-- These two are wrapped in span because on mobile we want to display them on separate lines -->  
-          <span>Match: {response.match}</span>
-          <span>Team: {response.team}</span>
+          <span><span class="font-normal text-gray-400">Match: </span><span class="">{response.match}</span></span>
+          <!-- Add a space between them on desktop -->
+          <span class="sm:ml-5"><span class="font-normal text-gray-400">Team: </span><span class="">{response.team}</span></span>
           </button>
 
           <!-- The submit and delete buttons -->
