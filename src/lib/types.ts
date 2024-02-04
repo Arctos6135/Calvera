@@ -78,5 +78,5 @@ export type Dropdown = {
 export type Textbox = {
     type: "Textbox",
     id: string,
-    maxlength: number,
+    maxLength?: number,
 }

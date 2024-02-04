@@ -3,6 +3,7 @@
 	import Checkbox from "$lib/components/FormFlow/Checkbox.svelte";
 	import Counter from "$lib/components/FormFlow/Counter.svelte";
 	import Dropdown from "$lib/components/FormFlow/Dropdown.svelte";
+	import Textbox from "$lib/components/FormFlow/Textbox.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
     import ResponseList from "$lib/components/ResponseList.svelte";
 	import { matches } from "$lib/store";
@@ -19,6 +20,8 @@
     }
 
     let enabled = false;
+
+    let content: string;
 </script>
 
 <div>
@@ -27,8 +30,9 @@
     <!-- <div>Current choice: {choice}</div>
     <div>Checkbox is currently {enabled ? "enabled" : "disabled"}</div>
     <button on:click={() => {manual = !manual;}}>Manual</button> -->
-
-    <Counter label="An epic counter" component={ { id: "10", type: "Counter" } } />
+    <!-- <div>The textbox says: {content}</div>
+    <Textbox label="An epic textbox" component={ { type: "Textbox", id: "13", maxLength: 10 } } bind:content />
+    <Counter label="An epic counter" component={ { id: "10", type: "Counter" } } /> -->
     <!-- <Dropdown label="My very long dropdown" bind:choice={choice} component={ { id: "11", type:"Dropdown", options: ['a', 'b', 'c'], validator, manual } }/>
     <Checkbox label="My checkbox" bind:enabled={enabled} component={ { type: "Checkbox", id:"12" } }/> -->
 

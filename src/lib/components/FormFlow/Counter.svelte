@@ -1,6 +1,5 @@
 <script lang="ts">
-        import type { Counter } from "$lib/types";
-
+    import type { Counter } from "$lib/types";
     
     export let label: string;
 
