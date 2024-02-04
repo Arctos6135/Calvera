@@ -11,7 +11,7 @@
     // Wrap the validator in another function
     // so we can update the error string in this 
     // which is returned by the validator component.
-    let error: string | undefined;
+    export let error: string | undefined = undefined;
     let runValidator = () => {
         error = component.validator(choice);
     }
@@ -33,7 +33,7 @@
                 <select
                     bind:value={choice}
                     on:change={runValidator}
-                    class="flex-auto sm:inline bg-primary w-64 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                    class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
                 >{#each component.options as option}
                         <option
                             class="cursor-pointer"
@@ -48,7 +48,7 @@
                     type="text"
                     bind:value={choice}
                     on:blur={runValidator}
-                    class="flex-auto sm:inline bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                    class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
                 />
             {/if}
         </span>

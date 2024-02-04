@@ -9,11 +9,16 @@
     let match = "";
     let formType = "";
 
+    let errorFormType: string | undefined = undefined;
+    let errorMatch: string | undefined = undefined;
+    let errorTeam: string | undefined = undefined;
+    let errorScoutName: string | undefined = undefined;
+
     // This is called onFormSubmit but its really for creating a form
     // Because youre submitting like a mini form with team and match number and stuff
     function onFormSubmit() {
         if (!error) {
-        // assigns it an ID and puts it in activeResponses
+            // assigns it an ID and puts it in activeResponses
             const id = randomID();
             $activeResponses[id] = {
             // data is an array of components by their IDs
@@ -41,13 +46,17 @@
             $matches[parseInt(match)]?.red_alliance.includes(team.number) ||
             $matches[parseInt(match)]?.blue_alliance.includes(team.number)
     );
-    $: error =
-        team == "" || team == null || match == "" || match == null || $scout == "";
+
+    $: error = errorFormType !== undefined 
+        || errorTeam !== undefined 
+        || errorScoutName !== undefined
+        || (formType != "Pit Scouting" && errorMatch !== undefined);
 </script>
 
 
 <div>
     <Dropdown bind:choice={formType} label="Form Type" 
+        bind:error={errorFormType}
         component={ { 
             type: "Dropdown", 
             id: "Form Type",
@@ -72,6 +81,7 @@
 
     {#if formType != "Pit Scouting"}
         <Dropdown bind:choice={match} label="Match"
+            bind:error={errorMatch}
             component={ {
                 type: "Dropdown",
                 id: "Match",
@@ -98,6 +108,7 @@
     {/if}
     <div>
         <Dropdown bind:choice={team} label="Team"
+            bind:error={errorTeam}
             component={ {
                 type: "Dropdown",
                 id: "Team",
@@ -125,6 +136,7 @@
     <div>
         <!-- Using the dropdown as an input field because too lazy to code it rn :) -->
         <Dropdown bind:choice={$scout} label="Scout Name"
+            bind:error={errorScoutName}
             component={ {
                 type: "Dropdown",
                 id: "Scout Name",
@@ -150,6 +162,14 @@
         } }
     />
     <div class="flex px-20 mt-3">
-        <button class="button clickable flex-auto" disabled={error} on:click={onFormSubmit}>Create</button>
+        <button 
+            class="button flex-auto"
+            class:clickable={!error}
+            class:!bg-disabled={error}
+            class:!text-gray-500={error}
+            class:!font-normal={error}
+            disabled={error} 
+            on:click={onFormSubmit}
+        >Create</button>
     </div>
 </div>

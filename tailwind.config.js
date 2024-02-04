@@ -9,6 +9,7 @@ export default {
         hover: "#1b284f",
         click: "#121c38",
         enabled: "#1d2e5c",
+        disabled: "#0d1221",
       },
 
       dropShadow: {
