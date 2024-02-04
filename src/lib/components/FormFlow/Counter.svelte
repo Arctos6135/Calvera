@@ -82,6 +82,6 @@
         </span>
     </div>
     {#if (error !== undefined)}
-        <span class="text-red-700 text-md font-bold">{error}</span>
+        <div class="text-red-700 text-md font-bold w-max ml-[auto]">{error}</div>
     {/if}
 </div>
