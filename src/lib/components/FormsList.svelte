@@ -1,8 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-
     import { submitResponse, deleteResponse } from "$lib/actions";
-
     import { activeResponses, errors, response } from "$lib/store";
 
     const setResponse = (id: number) => {
@@ -16,25 +14,25 @@
 <div class="py-4">
     <span class="text-2xl text-text block mb-2 font-bold">Forms</span>
     <hr class="text-text/50" />
-    <ul class="">
+    <ul class="max-h-[25vh] pr-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-enabled scrollbar-track-primary">
       {#each responses as response (response.id)}
-        <li class="flex mt-1">
-          <span class="flex-auto">
-            <button
-              on:click={() => setResponse(response.id)}
-              class="text-secondary hover:text-primary"
-              >Match: {response.match} Team: {response.team}
-            </button>
-          </span>
+        <li class="flex button clickable mt-1 bg-primary rounded-xl !py-1.5 !px-3 !font-normal">
+          <!-- Main button that takes you to the response -->
+          <button class="flex-auto text-white text-left"
+            on:click={() => setResponse(response.id)}
+            >Match: {response.match} Team: {response.team}
+          </button>
+
+          <!-- The submit and delete buttons -->
           <span>
             <button
-              class="rounded-md px-1 shadow-sm border-2 bg-error/50 border-error hover:bg-error/40 text-text/80"
-              on:click={() => deleteResponse(response.id)}>Delete</button
+              class="button clickable !px-2 !py-1 !bg-enabled mr-1 !font-normal cursor-pointer"
+              on:click={() => deleteResponse(response.id)}>🗑️ Delete</button
             >
             <button
-              class="rounded-md px-1 shadow-sm border-2 bg-success/50 border-success hover:bg-success/30 text-text/80 disabled:bg-success/10 disabled:border-success/40"
+              class="button clickable !px-2 !py-1 !bg-enabled !font-normal cursor-pointer"
               disabled={$errors[response.id]}
-              on:click={() => submitResponse(response.id)}>Submit</button
+              on:click={() => submitResponse(response.id)}>✔ Submit</button
             >
           </span>
         </li>

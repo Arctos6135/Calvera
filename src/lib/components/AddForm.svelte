@@ -6,15 +6,15 @@
     let match = "";
     let formType = "";
 
-    //This is called onFormSubmit but its really for creating a form
-    //Because youre submitting like a mini form with team and match number and stuff
+    // This is called onFormSubmit but its really for creating a form
+    // Because youre submitting like a mini form with team and match number and stuff
     function onFormSubmit() {
         if (!error) {
-        //assigns it an ID and puts it in activeResponses
+        // assigns it an ID and puts it in activeResponses
             const id = randomID();
             $activeResponses[id] = {
-            //data is an array of components by their IDs
-            //All this might need to change to deal with different types of forms
+            // data is an array of components by their IDs
+            // All this might need to change to deal with different types of forms
             data: {},
             id: id,
             scout: $scout,
@@ -42,7 +42,7 @@
         team == "" || team == null || match == "" || match == null || $scout == "";
 </script>
 
-<!--Someone needs to CSS this-->
+
 <div>
     <div>
         <span>Form Type</span>
