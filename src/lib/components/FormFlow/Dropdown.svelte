@@ -21,34 +21,37 @@
 </script>
 
 <div class="my-2">
-    <div class="flex justify-between items-center gap-2">
+    <div class="sm:flex justify-between items-center gap-2">
         <span
             class="text-xl min-w-max"
         >{label}</span>
 
+        <span
+            class="flex sm:inline mt-1 sm:mt-0">
         <!-- Display the dropdown menu if manual is false -->
-        {#if !component.manual}
-            <select
-                bind:value={choice}
-                on:change={runValidator}
-                class="bg-primary w-64 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
-            >{#each component.options as option}
-                    <option
-                        class="cursor-pointer"
-                        value={option}
-                    >{option}</option>
-                {/each}
-            </select>
-        {:else}
-        
-        <!-- Display a text input field if manual is true -->
-            <input
-                type="text"
-                bind:value={choice}
-                on:blur={runValidator}
-                class="bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
-            />
-        {/if}
+            {#if !component.manual}
+                <select
+                    bind:value={choice}
+                    on:change={runValidator}
+                    class="flex-auto sm:inline bg-primary w-64 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                >{#each component.options as option}
+                        <option
+                            class="cursor-pointer"
+                            value={option}
+                        >{option}</option>
+                    {/each}
+                </select>
+            {:else}
+            
+            <!-- Display a text input field if manual is true -->
+                <input
+                    type="text"
+                    bind:value={choice}
+                    on:blur={runValidator}
+                    class="flex-auto sm:inline bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                />
+            {/if}
+        </span>
     </div>
 
     {#if error != undefined}

@@ -50,8 +50,7 @@
     <Dropdown bind:choice={formType} label="Form Type" 
         component={ { 
             type: "Dropdown", 
-            id: "Form Type", 
-            manual,
+            id: "Form Type",
             options: ["Scouting", "Super Scouting", "Pit Scouting"], 
 
             /**

@@ -52,11 +52,12 @@
 </script>
 
 <div class="my-2">
-    <div class="flex items-center justify-between gap-2">
+    <div class="block sm:flex items-center justify-between gap-2 ">
         <span
             class="text-xl min-w-max"
         >{label}</span>
-        <span class="grid grid-cols-counter grid-rows-1 gap-1">
+
+        <span class="grid grid-cols-counter grid-rows-1 gap-1 mt-1 sm:mt-0">
             <!-- Primary input fields -->
             <input
                 type="number"

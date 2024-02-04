@@ -18,18 +18,20 @@
       {#each responses as response (response.id)}
         <li class="flex button clickable mt-1 bg-primary rounded-xl !py-1.5 !px-3 !font-normal">
           <!-- Main button that takes you to the response -->
-          <button class="flex-auto text-white text-left"
+          <button class="flex-auto text-white text-left flex flex-col sm:block"
             on:click={() => setResponse(response.id)}
-            >Match: {response.match} Team: {response.team}
+          >
+          <!-- These two are wrapped in span because on mobile we want to display them on separate lines -->  
+          <span>Match: {response.match}</span>
+          <span>Team: {response.team}</span>
           </button>
 
           <!-- The submit and delete buttons -->
-          <span>
+          <span class="flex">
             <button
               class="button clickable !px-2 !py-1 !bg-enabled mr-1 !font-normal"
               on:click={() => deleteResponse(response.id)}>🗑️ Delete</button
-            >
-            <button
+            ><button
               class="button clickable !px-2 !py-1 !bg-enabled !font-normal"
               disabled={$errors[response.id]}
               on:click={() => submitResponse(response.id)}>✔ Submit</button
