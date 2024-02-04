@@ -51,7 +51,7 @@
     }
 </script>
 
-<div>
+<div class="my-2">
     <div class="flex items-center justify-between gap-2">
         <span
             class="text-xl min-w-max"

@@ -16,7 +16,7 @@
 }
 
 .clickable {
-    @apply hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click;
+    @apply hover:drop-shadow-btn-hover hover:bg-hover active:filter-none active:bg-click cursor-pointer;
 }
 
 * {

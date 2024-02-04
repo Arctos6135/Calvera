@@ -15,9 +15,12 @@
     let runValidator = () => {
         error = component.validator(choice);
     }
+
+    // Run the validator at least once before mount
+    runValidator();
 </script>
 
-<div>
+<div class="my-2">
     <div class="flex justify-between items-center gap-2">
         <span
             class="text-xl min-w-max"
@@ -28,7 +31,7 @@
             <select
                 bind:value={choice}
                 on:change={runValidator}
-                class="bg-primary min-w-max w-64 rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                class="bg-primary w-64 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
             >{#each component.options as option}
                     <option
                         class="cursor-pointer"
@@ -43,7 +46,7 @@
                 type="text"
                 bind:value={choice}
                 on:blur={runValidator}
-                class="bg-primary rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                class="bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
             />
         {/if}
     </div>

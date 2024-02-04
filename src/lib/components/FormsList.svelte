@@ -13,7 +13,7 @@
 
 <div class="py-4">
     <span class="text-2xl text-text block mb-2 font-bold">Forms</span>
-    <hr class="text-text/50" />
+    <hr class="text-text/50 mb-2" />
     <ul class="max-h-[25vh] pr-2 overflow-y-scroll scrollbar-thin scrollbar-thumb-enabled scrollbar-track-primary">
       {#each responses as response (response.id)}
         <li class="flex button clickable mt-1 bg-primary rounded-xl !py-1.5 !px-3 !font-normal">
@@ -26,11 +26,11 @@
           <!-- The submit and delete buttons -->
           <span>
             <button
-              class="button clickable !px-2 !py-1 !bg-enabled mr-1 !font-normal cursor-pointer"
+              class="button clickable !px-2 !py-1 !bg-enabled mr-1 !font-normal"
               on:click={() => deleteResponse(response.id)}>🗑️ Delete</button
             >
             <button
-              class="button clickable !px-2 !py-1 !bg-enabled !font-normal cursor-pointer"
+              class="button clickable !px-2 !py-1 !bg-enabled !font-normal"
               disabled={$errors[response.id]}
               on:click={() => submitResponse(response.id)}>✔ Submit</button
             >

@@ -1,6 +1,9 @@
 <script lang="ts">
     import { activeResponses, teams, matches, scout, errors } from "$lib/store";
     import { randomID } from "$lib/id";
+	import Dropdown from "./FormFlow/Dropdown.svelte";
+	import { defaultValidator, numericValidator } from "$lib/validators";
+	import Checkbox from "./FormFlow/Checkbox.svelte";
 
     let team = "";
     let match = "";
@@ -44,58 +47,110 @@
 
 
 <div>
-    <div>
-        <span>Form Type</span>
-        <select bind:value={formType}>
-            <option value="BSForm">Scouting</option>
-            <option value="SSForm">Super Scouting</option>
-            <option value="PSForm">Pit Scouting</option>
-        </select>
-    </div>
-    {#if formType != "PSForm"}
-        <div>
-            <span>Match</span>
-            {#if manual}
-                <input type="number" bind:value={match}/>
-            {:else}
-                <select bind:value={match}>
-                    {#each Object.values($matches) as match (match.number)}
-                        <option value={match.number}>{match.number}</option>
-                    {/each}
-                </select>
-            {/if}
-            {#if match == "" || match == null}
-                <div>Need to choose a match</div>
-            {/if}
-        </div>
+    <Dropdown bind:choice={formType} label="Form Type" 
+        component={ { 
+            type: "Dropdown", 
+            id: "Form Type", 
+            manual,
+            options: ["Scouting", "Super Scouting", "Pit Scouting"], 
+
+            /**
+             * This just uses the default validator and overrides
+             * the message when the choice is empty.
+             * @param val
+             */
+            validator: (val) => {
+                const result = defaultValidator(val);
+
+                if (result != undefined) {
+                    return "Must choose a form type";
+                }
+
+                return undefined;
+            },
+        } }
+    />
+
+    {#if formType != "Pit Scouting"}
+        <Dropdown bind:choice={match} label="Match"
+            component={ {
+                type: "Dropdown",
+                id: "Match",
+                manual,
+                // Convert the matches array into an array of strings.
+                options: Object.values($matches).map((match) => match.number.toString()),
+
+                // Customize the error message
+                validator: (val) => {
+                    const notEmpty = defaultValidator(val);
+                    if (notEmpty != undefined) {
+                        return "Must choose a match";
+                    }
+
+                    const isNumeric = numericValidator(val);
+                    if (isNumeric != undefined) {
+                        return "Must be a valid match";
+                    }
+
+                    return undefined;
+                },
+            } }
+        />
     {/if}
     <div>
-        <span>Team</span>
-        {#if manual}
-            <input type="number" bind:value={team}/>
-        {:else}
-            <select bind:value={team}>
-                {#each matchTeams as team (team.number)}
-                    <option value={team.number}>{team.number}</option>
-                {/each}
-            </select>
-        {/if}
-        {#if team == "" || team == null}
-            <div>Need to choose a team</div>
-        {/if}
+        <Dropdown bind:choice={team} label="Team"
+            component={ {
+                type: "Dropdown",
+                id: "Team",
+                manual,
+                // Convert the teams array into an array of strings.
+                options: matchTeams.map((team) => team.number.toString()),
+
+                // Customize the error message
+                validator: (val) => {
+                    const notEmpty = defaultValidator(val);
+                    if (notEmpty != undefined) {
+                        return "Must choose a team";
+                    }
+
+                    const isNumeric = numericValidator(val);
+                    if (isNumeric != undefined) {
+                        return "Must be a valid team";
+                    }
+
+                    return undefined;
+                },
+            } }
+        />
     </div>
     <div>
-        <span>Scout name</span>
-        <input type="text" bind:value={$scout}/>
-        {#if $scout == ""}
-            <div>Scout needs a name</div>
-        {/if}
+        <!-- Using the dropdown as an input field because too lazy to code it rn :) -->
+        <Dropdown bind:choice={$scout} label="Scout Name"
+            component={ {
+                type: "Dropdown",
+                id: "Scout Name",
+                manual: true,
+                options: [],
+
+                // Customize the error message
+                validator: (val) => {
+                    const notEmpty = defaultValidator(val);
+                    if (notEmpty != undefined) {
+                        return "Must have a scout name";
+                    }
+
+                    return undefined;
+                },
+            } }
+        />
     </div>
-    <div>
-        <button disabled={error} on:click={onFormSubmit}>Create</button>
-    </div>
-    <div>
-        <span>Manual</span>
-        <input type="checkbox" value="" bind:checked={manual}/>
+    <Checkbox bind:enabled={manual} label="Manual" 
+        component={ {
+            type: "Checkbox",
+            id: "Manual",
+        } }
+    />
+    <div class="flex px-20 mt-3">
+        <button class="button clickable flex-auto" disabled={error} on:click={onFormSubmit}>Create</button>
     </div>
 </div>

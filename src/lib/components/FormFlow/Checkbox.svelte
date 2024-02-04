@@ -6,7 +6,7 @@
     export let enabled = component.initialValue ?? false;
 </script>
 
-<div class="flex justify-between items-center">
+<div class="flex justify-between items-center my-2">
     <span
         class="text-xl min-w-max"
     >{label}</span>
