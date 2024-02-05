@@ -132,7 +132,9 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "level of failure",
-                        options: ["Minor", "Major", "Catastrophic"]
+                        options: ["Minor", "Major", "Catastrophic"],
+                        manual: false,
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
@@ -141,7 +143,9 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
-                        options: ["Yellow card", "Red card", "Disqualified"]
+                        options: ["Yellow card", "Red card", "Disqualified"],
+                        manual: false,
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
@@ -150,7 +154,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Textbox",
                         id: "serious foul reason",
-                        maxlength: 100
+                        maxLength: 100
                     }
                 },
                 {
@@ -159,7 +163,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Textbox",
                         id: "comments",
-                        maxlength: 500
+                        maxLength: 500
                     }
                 },
             ]
@@ -233,7 +237,9 @@ export const PSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "amp scoring",
-                        options: ["Yes", "Maybe", "No"]
+                        options: ["Yes", "Maybe", "No"],
+                        manual: false,
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
@@ -242,7 +248,9 @@ export const PSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "speaker scoring",
-                        options: ["Yes", "Maybe", "No"]
+                        options: ["Yes", "Maybe", "No"],
+                        manual: false,
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
@@ -260,7 +268,9 @@ export const PSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "drivetrain",
-                        options: ["Tank", "Swerve", "Other"]
+                        options: ["Tank", "Swerve", "Other"],
+                        manual: false,
+                        validator: (choice: string) => undefined
                     }
                 },
                 {
@@ -309,7 +319,7 @@ export const PSForm: Form = {
                     component: {
                         type: "Textbox",
                         id: "autos",
-                        maxlength: 200
+                        maxLength: 200
                     }
                 },
                 {
@@ -318,7 +328,7 @@ export const PSForm: Form = {
                     component: {
                         type: "Textbox",
                         id: "fave colour",
-                        maxlength: 42
+                        maxLength: 42
                     }
                 },
             ]
