@@ -24,6 +24,7 @@
             // data is an array of components by their IDs
             // All this might need to change to deal with different types of forms
             data: {},
+            type: formType,
             id: id,
             scout: $scout,
             team: parseInt(team),

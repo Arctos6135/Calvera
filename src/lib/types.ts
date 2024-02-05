@@ -1,4 +1,5 @@
 export type Response = {
+    type: string,
     data: Record<string, string | number>;
     id: number;
     match: number;

@@ -21,8 +21,12 @@
           <button class="flex-auto text-white text-left flex flex-col sm:block"
             on:click={() => setResponse(response.id)}
           >
+
+          <span class="font-normal text-gray-400">{response.type} Form</span>
+          {#if response.type != "Pit Scouting"}
           <!-- These two are wrapped in span because on mobile we want to display them on separate lines -->  
-          <span><span class="font-normal text-gray-400">Match: </span><span class="">{response.match}</span></span>
+              <span><span class="font-normal text-gray-400">Match: </span><span class="">{response.match}</span></span>
+          {/if}
           <!-- Add a space between them on desktop -->
           <span class="sm:ml-5"><span class="font-normal text-gray-400">Team: </span><span class="">{response.team}</span></span>
           </button>
