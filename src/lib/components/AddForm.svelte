@@ -107,61 +107,61 @@
             } }
         />
     {/if}
-    <div>
-        <Dropdown bind:choice={team} label="Team"
-            bind:error={errorTeam}
-            component={ {
-                type: "Dropdown",
-                id: "Team",
-                manual,
-                // Convert the teams array into an array of strings.
-                options: matchTeams.map((team) => team.number.toString()),
 
-                // Customize the error message
-                validator: (val) => {
-                    const notEmpty = defaultValidator(val);
-                    if (notEmpty != undefined) {
-                        return "Must choose a team";
-                    }
+    <Dropdown bind:choice={team} label="Team"
+        bind:error={errorTeam}
+        component={ {
+            type: "Dropdown",
+            id: "Team",
+            manual,
+            // Convert the teams array into an array of strings.
+            options: matchTeams.map((team) => team.number.toString()),
 
-                    const isNumeric = numericValidator(val);
-                    if (isNumeric != undefined) {
-                        return "Must be a valid team";
-                    }
+            // Customize the error message
+            validator: (val) => {
+                const notEmpty = defaultValidator(val);
+                if (notEmpty != undefined) {
+                    return "Must choose a team";
+                }
 
-                    return undefined;
-                },
-            } }
-        />
-    </div>
-    <div>
-        <!-- Using the dropdown as an input field because too lazy to code it rn :) -->
-        <Dropdown bind:choice={$scout} label="Scout Name"
-            bind:error={errorScoutName}
-            component={ {
-                type: "Dropdown",
-                id: "Scout Name",
-                manual: true,
-                options: [],
+                const isNumeric = numericValidator(val);
+                if (isNumeric != undefined) {
+                    return "Must be a valid team";
+                }
 
-                // Customize the error message
-                validator: (val) => {
-                    const notEmpty = defaultValidator(val);
-                    if (notEmpty != undefined) {
-                        return "Must have a scout name";
-                    }
+                return undefined;
+            },
+        } }
+    />
 
-                    return undefined;
-                },
-            } }
-        />
-    </div>
+    <!-- Using the dropdown as an input field because too lazy to code it rn :) -->
+    <Dropdown bind:choice={$scout} label="Scout Name"
+        bind:error={errorScoutName}
+        component={ {
+            type: "Dropdown",
+            id: "Scout Name",
+            manual: true,
+            options: [],
+
+            // Customize the error message
+            validator: (val) => {
+                const notEmpty = defaultValidator(val);
+                if (notEmpty != undefined) {
+                    return "Must have a scout name";
+                }
+
+                return undefined;
+            },
+        } }
+    />
+
     <Checkbox bind:enabled={manual} label="Manual" 
         component={ {
             type: "Checkbox",
             id: "Manual",
         } }
     />
+
     <div class="flex px-20 mt-3">
         <button 
             class="button flex-auto"

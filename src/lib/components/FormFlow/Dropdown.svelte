@@ -16,6 +16,11 @@
         error = component.validator(choice);
     }
 
+    $: {
+        choice;
+        runValidator();
+    }
+
     // Run the validator at least once before mount
     runValidator();
 </script>
