@@ -1,4 +1,5 @@
 <script lang="ts">
+    import FormFlow from "$lib/components/FormFlow/index.svelte";
     import AddForm from "$lib/components/AddForm.svelte";
 	import Checkbox from "$lib/components/FormFlow/Checkbox.svelte";
 	import Counter from "$lib/components/FormFlow/Counter.svelte";
@@ -6,8 +7,9 @@
 	import Textbox from "$lib/components/FormFlow/Textbox.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
     import ResponseList from "$lib/components/ResponseList.svelte";
-	import { matches } from "$lib/store";
+	import { matches, form } from "$lib/store";
 	import { onMount } from "svelte";
+    import { BSForm, PSForm, SSForm } from "$lib/formLayout";
 
     let choice = "a";
     let manual = false;
@@ -24,7 +26,7 @@
     let content: string;
 </script>
 
-<div class="md:max-w-[800px] mx-auto">
+<div class="md:max-w-[600px] mx-auto">
     <!-- This is just some code to test the components -->
     
     <!-- <div>Current choice: {choice}</div>
@@ -37,6 +39,8 @@
 
     <!-- <Dropdown label="My very long dropdown" bind:choice={choice} component={ { id: "11", type:"Dropdown", options: ['a', 'b', 'c'], validator, manual } }/>
     <Checkbox label="My checkbox" bind:enabled={enabled} component={ { type: "Checkbox", id:"12" } }/> -->
+
+    <!-- <FormFlow formType={PSForm}></FormFlow> -->
 
     <FormsList/>
     <div>

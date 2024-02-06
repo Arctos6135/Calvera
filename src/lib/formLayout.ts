@@ -1,4 +1,4 @@
-import { Form } from "./types";
+import type { Form } from "./types";
 
 export const BSForm: Form = {
     sections: [
@@ -134,6 +134,8 @@ export const SSForm: Form = {
                         id: "level of failure",
                         options: ["Minor", "Major", "Catastrophic"],
                         manual: false,
+
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
                         validator: (choice: string) => undefined
                     }
                 },
@@ -145,6 +147,8 @@ export const SSForm: Form = {
                         id: "serious foul",
                         options: ["Yellow card", "Red card", "Disqualified"],
                         manual: false,
+                        
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
                         validator: (choice: string) => undefined
                     }
                 },
