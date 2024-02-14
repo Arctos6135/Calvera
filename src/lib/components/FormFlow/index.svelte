@@ -14,6 +14,8 @@
         } else if ($activeResponses[Number($response)].type == "Scouting"){
             formType == BSForm
         }
+
+        console.log(formType)
     }
 
     
