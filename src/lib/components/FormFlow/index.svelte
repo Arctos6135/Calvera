@@ -11,8 +11,8 @@
             formType == BSForm
         } else if ($activeResponses[Number($response)].type == "Super Scouting"){
             formType == SSForm
-        } else if ($activeResponses[Number($response)].type == "Scouting"){
-            formType == BSForm
+        } else if ($activeResponses[Number($response)].type == "Pit Scouting"){
+            formType == PSForm
         }
 
         console.log(formType)

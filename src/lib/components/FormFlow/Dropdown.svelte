@@ -19,10 +19,18 @@
     $: {
         choice;
         runValidator();
+
+        console.log("Dropdown error " + error)
     }
 
     // Run the validator at least once before mount
     runValidator();
+
+    $: {
+        choice;
+
+        console.log("Choice changed to " + choice)
+    }
 </script>
 
 <div class="my-2">
@@ -39,7 +47,8 @@
                     bind:value={choice}
                     on:change={runValidator}
                     class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
-                >{#each component.options as option}
+                >
+                    {#each component.options as option}
                         <option
                             class="cursor-pointer"
                             value={option}

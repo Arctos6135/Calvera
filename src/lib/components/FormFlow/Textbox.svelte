@@ -5,6 +5,9 @@
     export let component: Textbox;
     export let content = "";
     export let tooLong: boolean = false;
+
+    //Somewhere we should set this to true if it has errors
+    export let error: boolean = false;
     let wordLength = 0;
 
     const validateLength = () => {
