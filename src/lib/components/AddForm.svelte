@@ -4,10 +4,11 @@
 	import Dropdown from "./FormFlow/Dropdown.svelte";
 	import { defaultValidator, numericValidator } from "$lib/validators";
 	import Checkbox from "./FormFlow/Checkbox.svelte";
+    import { formTypes } from "$lib/formLayout";
 
     let team = "";
     let match = "";
-    let formType = "";
+    let formType = formTypes[0];
 
     let errorFormType: string | undefined = undefined;
     let errorMatch: string | undefined = undefined;
@@ -24,7 +25,8 @@
             // data is an array of components by their IDs
             // All this might need to change to deal with different types of forms
             data: {},
-            type: formType,
+            //Maybe switch this to the actual type?
+            type: formType.name,
             id: id,
             scout: $scout,
             team: parseInt(team),
@@ -51,88 +53,49 @@
     $: error = errorFormType !== undefined 
         || errorTeam !== undefined 
         || errorScoutName !== undefined
-        || (formType != "Pit Scouting" && errorMatch !== undefined);
+        || (formType.name != "Pit Scouting" && errorMatch !== undefined);
 </script>
 
 
-<div>
-    <Dropdown bind:choice={formType} label="Form Type" 
-        bind:error={errorFormType}
-        component={ { 
-            type: "Dropdown", 
-            id: "Form Type",
-            options: ["Scouting", "Super Scouting", "Pit Scouting"], 
-
-            /**
-             * This just uses the default validator and overrides
-             * the message when the choice is empty.
-             * @param val
-             */
-            validator: (val) => {
-                const result = defaultValidator(val);
-
-                if (result != undefined) {
-                    return "Must choose a form type";
-                }
-
-                return undefined;
-            },
-        } }
-    />
-
-    {#if formType != "Pit Scouting"}
-        <Dropdown bind:choice={match} label="Match"
-            bind:error={errorMatch}
-            component={ {
-                type: "Dropdown",
-                id: "Match",
-                manual,
-                // Convert the matches array into an array of strings.
-                options: Object.values($matches).map((match) => match.number.toString()),
-
-                // Customize the error message
-                validator: (val) => {
-                    const notEmpty = defaultValidator(val);
-                    if (notEmpty != undefined) {
-                        return "Must choose a match";
-                    }
-
-                    const isNumeric = numericValidator(val);
-                    if (isNumeric != undefined) {
-                        return "Must be a valid match";
-                    }
-
-                    return undefined;
-                },
-            } }
-        />
-    {/if}
-
-    <Dropdown bind:choice={team} label="Team"
-        bind:error={errorTeam}
-        component={ {
-            type: "Dropdown",
-            id: "Team",
-            manual,
-            // Convert the teams array into an array of strings.
-            options: matchTeams.map((team) => team.number.toString()),
-
-            // Customize the error message
-            validator: (val) => {
-                const notEmpty = defaultValidator(val);
-                if (notEmpty != undefined) {
-                    return "Must choose a team";
-                }
-
-                const isNumeric = numericValidator(val);
-                if (isNumeric != undefined) {
-                    return "Must be a valid team";
-                }
-
-                return undefined;
-            },
-        } }
-    />
+<div class="space-y-4">
+    <div class='flex flex-col'>
+        <span class='text-text'>Form Type</span>
+        <select bind:value={formType} class="rounded-md bg-background text-text border-2">
+            {#each formTypes as formType}
+                <option value={formType}>{formType.name}</option>
+            {/each}
+        </select>
+        {#if formType == null}
+            <div class="text-error">Need to choose a form type</div>
+        {/if}
+    </div>
+    <div>
+        {#if formType.name != "Pit Scouting"}
+            <span class="text-text">Match</span>
+            {#if manual}
+                <input type="number" bind:value={match} class="rounded-md bg-background text-text border-2">
+            {:else}
+                <!--Non-manual stuff below-->
+                <div class="text-error">Please change to manual</div>
+            {/if}   
+            {#if match == "" || match == null}
+                <div class="text-error">Need to choose a match</div>
+            {/if}
+        {/if}
+    </div>
+    <div>
+        <span class="text-text">Team</span>
+        {#if manual}
+            <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
+        {:else}
+            <!--Non-manual stuff below-->
+            <div class="text-error">Please change to manual</div>
+        {/if}
+        {#if team == "" || team == null}
+            <div class="text-error">Need to choose a team</div>
+        {/if}
+    </div>
+    
 
     <!-- Using the dropdown as an input field because too lazy to code it rn :) -->
     <Dropdown bind:choice={$scout} label="Scout Name"

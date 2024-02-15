@@ -1,4 +1,4 @@
-import type { Form } from "./types";
+import type { Form, FormType } from "./types";
 
 export const BSForm: Form = {
     sections: [
@@ -339,3 +339,18 @@ export const PSForm: Form = {
         }
     ]
 }
+
+export const formTypes: FormType[] = [
+    {
+        name: "Scouting",
+        type: BSForm
+    },
+    {
+        name: "Super Scouting",
+        type: SSForm
+    },
+    {
+        name: "Pit Scouting",
+        type: PSForm
+    }
+]

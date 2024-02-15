@@ -81,3 +81,8 @@ export type Textbox = {
     id: string,
     maxLength?: number,
 }
+
+export type FormType = {
+    name: string,
+    type: Form
+}
