@@ -10,6 +10,7 @@
     let match = "";
     let formType = formTypes[0];
 
+    let error: boolean = false;
     let errorFormType: string | undefined = undefined;
     let errorMatch: string | undefined = undefined;
     let errorTeam: string | undefined = undefined;
@@ -118,7 +119,7 @@
         } }
     />
 
-    <Checkbox bind:enabled={manual} label="Manual" 
+    <Checkbox bind:checked={manual} label="Manual" 
         component={ {
             type: "Checkbox",
             id: "Manual",
