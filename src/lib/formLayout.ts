@@ -86,7 +86,7 @@ export const BSForm: Form = {
 }
 
 export const SSForm: Form = {
-    /* sections: [
+    sections: [
         {
             type: "section",
             id: "Auto",
@@ -225,28 +225,7 @@ export const SSForm: Form = {
                 },
             ]
         }
-    ] */
-
-    sections: [
-        {
-            type: "section",
-            id: "a",
-            header: "Test",
-            inputs: [
-                {
-                    type: "input",
-                    label: "test dropdown",
-                    component: {
-                        type: "Dropdown",
-                        id: "amp scoring",
-                        options: ["Yes", "Maybe", "No"],
-                        manual: false,
-                        validator: (choice: string) => undefined
-                    }
-                }
-            ]
-        }
-    ]
+    ] 
 } 
 
 export const PSForm: Form = {
