@@ -26,11 +26,6 @@
     // Run the validator at least once before mount
     runValidator();
 
-    $: {
-        choice;
-
-        console.log("Choice changed to " + choice)
-    }
 </script>
 
 <div class="my-2">
