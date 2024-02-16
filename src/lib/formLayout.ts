@@ -132,7 +132,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "level of failure",
-                        options: ["Minor", "Major", "Catastrophic"],
+                        options: ["None", "Minor", "Major", "Catastrophic"],
                         manual: false,
 
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -145,7 +145,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
-                        options: ["Yellow card", "Red card", "Disqualified"],
+                        options: ["None", "Yellow card", "Red card", "Disqualified"],
                         manual: false,
                         
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
