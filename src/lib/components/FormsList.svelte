@@ -23,8 +23,8 @@
           >
 
           <!-- These texts are wrapped in span because on mobile we want to display them on separate lines -->  
-          <span class="block sm:inline font-normal text-gray-400">{response.type}</span>
-          {#if response.type != "Pit Scouting"}
+          <span class="block sm:inline font-normal text-gray-400">{response.type.name}</span>
+          {#if response.type.name != "Pit Scouting"}
             <!-- Add a space between them on desktop -->
               <span class="block sm:inline "><span class="font-normal text-gray-400 sm:ml-5">Match: </span>{response.match}</span>
           {/if}

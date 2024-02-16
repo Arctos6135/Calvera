@@ -1,24 +1,10 @@
 <script lang="ts">
 	import { activeResponses, response } from "$lib/store";
-	import type { Component, Form } from "$lib/types";
-	import Dropdown from "./Dropdown.svelte";
+	import type { Form } from "$lib/types";
 	import Input from "./Input.svelte";
-    import { BSForm, SSForm, PSForm } from "$lib/formLayout";
-    export let formType: Form = SSForm;
+    export let formType: Form;
 
-    $: {
-        if ($activeResponses[Number($response)].type == "Scouting") {
-            formType == BSForm
-        } else if ($activeResponses[Number($response)].type == "Super Scouting"){
-            formType == SSForm
-        } else if ($activeResponses[Number($response)].type == "Pit Scouting"){
-            formType == PSForm
-        }
-
-        console.log(formType)
-    }
-
-    
+    $: formType = $activeResponses[Number($response)].type.type
 
 </script>
 

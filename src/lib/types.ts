@@ -1,8 +1,8 @@
 export type Response = {
-    type: string,
+    type: FormType,
     data: Record<string, string | number>;
     id: number;
-    match: number;
+    match: number | null;
     team: number;
     scout: string;
     alliance: "RED" | "BLUE";
