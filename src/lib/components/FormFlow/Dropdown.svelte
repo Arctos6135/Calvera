@@ -1,12 +1,16 @@
 <script lang="ts">
+	import { activeResponses } from "$lib/store";
 	import type { Dropdown } from "$lib/types";
+	import { getContext } from "svelte";
 
     export let component: Dropdown;
     export let label = "Dropdown";
 
+    const id: number = getContext("id")
+
     // To set a default selection, update this value
     // when declaring the component
-    export let choice: string;
+    export let choice: string = component.options[0];
 
     // Wrap the validator in another function
     // so we can update the error string in this 
@@ -17,10 +21,8 @@
     }
 
     $: {
-        choice;
+        choice = String($activeResponses[id].data[component.id])
         runValidator();
-
-        console.log("Dropdown error " + error)
     }
 
     // Run the validator at least once before mount
@@ -55,7 +57,7 @@
             <!-- Display a text input field if manual is true -->
                 <input
                     type="text"
-                    bind:value={choice}
+                    bind:value={$activeResponses[id].data[component.id]}
                     on:blur={runValidator}
                     class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
                 />

@@ -1,13 +1,16 @@
 <script lang="ts">
     import type { Textbox } from "$lib/types";
+    import { getContext } from "svelte";
+    import { activeResponses } from "$lib/store";
 
     export let label: string | undefined = undefined;
     export let component: Textbox;
-    export let content = "";
     export let tooLong: boolean = false;
+    export let content: string = "";
+    const id: number = getContext("id")
 
-    //Somewhere we should set this to true if it has errors
-    export let error: boolean = false;
+    $: content = String($activeResponses[id].data[component.id])
+
     let wordLength = 0;
 
     const validateLength = () => {
@@ -33,7 +36,7 @@
 
     <div class="flex relative">
         <textarea
-            bind:value={content}
+            bind:value={$activeResponses[id].data[component.id]}
             class="flex-auto h-[20vh] min-h-16 max-h-[60vh] bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9 scroll scrollbar-thin scrollbar-thumb-enabled scrollbar-track-background"
         ></textarea>
         {#if component.maxLength!=null}

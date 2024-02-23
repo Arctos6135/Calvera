@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { response } from "$lib/store";
+    import { response, activeResponses } from "$lib/store";
     import FormFlow from "$lib/components/FormFlow/index.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
   </script>
   
   {#if $response}
-    <FormFlow />
+    <FormFlow formType={$activeResponses[$response].type.type} />
   {:else}
     <FormsList />
   {/if}

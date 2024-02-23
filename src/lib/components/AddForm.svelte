@@ -3,17 +3,18 @@
     import { randomID } from "$lib/id";
 	import Checkbox from "./FormFlow/Checkbox.svelte";
     import { formTypes } from "$lib/formLayout";
+	import type { FormType } from "$lib/types";
 
     let team = "";
     let match = "";
-    let formType = formTypes[0];
+    let formType: FormType = formTypes[0];
 
     let error: boolean;
 
     // This is called onFormSubmit but its really for creating a form
     // Because youre submitting like a mini form with team and match number and stuff
     function onFormSubmit() {
-//        if (!error) {
+        if (!error) {
             // assigns it an ID and puts it in activeResponses
             const id = randomID();
             $activeResponses[id] = {
@@ -24,7 +25,7 @@
                 id: id,
                 scout: $scout,
                 team: parseInt(team),
-                match: (formType.name == "Pit Scouting") ? null : parseFloat(match),
+                match: (formType.name == "Pit Scouting") ? null : parseInt(match),
                 alliance: $matches[parseInt(match)]?.red_alliance.includes(
                     parseInt(team)
                 )
@@ -34,7 +35,7 @@
             $errors[id] = true;
             match = "";
             team = "";
-//        } 
+        } 
     }
     let manual = true;
 
@@ -68,7 +69,7 @@
             {:else}
                 <!--Non-manual stuff below-->
                 <div class="text-error">Please change to manual</div>
-            {/if}   
+            {/if}
             {#if match == "" || match == null}
                 <div class="text-error">Need to choose a match</div>
             {/if}
@@ -94,12 +95,20 @@
         {/if}
     </div>
 
-    <Checkbox bind:checked={manual} label="Manual" 
-        component={ {
-            type: "Checkbox",
-            id: "Manual",
-        } }
-    />
+    <div class="ml-auto">
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input
+                type="checkbox"
+                value=""
+                class="sr-only peer"
+                bind:checked={manual}
+            />
+            <div
+                class="w-[74px] h-[36px] bg-text/50 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[1px] after:left-[1px] peer-checked:after:left-[5px] after:bg-white after:rounded-full after:h-[34px] after:w-[34px] after:transition-all peer-checked:bg-primary focus:outline-none"
+            />
+            <span class="ml-1 text-text">Manual</span>
+        </label>
+    </div>
 
     <div class="flex px-20 mt-3">
         <button 
@@ -112,7 +121,5 @@
             on:click={onFormSubmit}
         >Create</button>
     </div>
-    <div>
-        <t>{error}</t>
-    </div>
+    <p>{parseInt(match)}</p>
 </div>

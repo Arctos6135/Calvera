@@ -1,9 +1,15 @@
 <script lang="ts">
+	import { activeResponses } from "$lib/store";
     import type { Checkbox } from "$lib/types";
+	import { getContext } from "svelte";
+
+    export const id: number = getContext("id")
 
     export let label = "Checkbox";
     export let component: Checkbox;
     export let checked = component.initialValue ?? false;
+
+    $: checked = Boolean($activeResponses[id].data[component.id])
 </script>
 
 <div class="flex justify-between items-center my-2">

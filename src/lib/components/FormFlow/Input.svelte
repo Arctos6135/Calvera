@@ -9,6 +9,7 @@
     let label = group.label;
 
     let choice: string;
+    let content: string;
     let component = group.component as never;
 
     let components = {
@@ -21,4 +22,4 @@
     let Component = components[group.component.type];
 </script>
 
-<Component component={component} bind:choice {label} />
+<Component {component} {label} />

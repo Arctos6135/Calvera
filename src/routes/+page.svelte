@@ -10,6 +10,7 @@
 	import { matches } from "$lib/store";
 	import { onMount } from "svelte";
     import { BSForm, PSForm, SSForm } from "$lib/formLayout";
+    import { goto } from "$app/navigation"
 
     let choice = "a";
     let manual = false;
@@ -48,3 +49,5 @@
     </div>
     <ResponseList/>
 </div>
+
+<button on:click={() => goto("/test")} >Test</button>

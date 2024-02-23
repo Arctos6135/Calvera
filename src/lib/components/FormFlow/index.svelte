@@ -2,10 +2,13 @@
 	import { activeResponses, response } from "$lib/store";
 	import type { Form } from "$lib/types";
 	import Input from "./Input.svelte";
+    import { setContext } from "svelte";
+
     export let formType: Form;
 
     $: formType = $activeResponses[Number($response)].type.type
 
+    $: setContext($response, "id")
 </script>
 
 <div>

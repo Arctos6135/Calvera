@@ -4,6 +4,25 @@ export const BSForm: Form = {
     sections: [
         {
             type: "section",
+            id: "Test",
+            header: "Test",
+            inputs: [
+                {
+                    type: "input",
+                    label: "test",
+                    component: {
+                        type: "Dropdown",
+                        id: "test",
+                        options: ["Does not work", "Works?"],
+                        
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                        validator: (choice: string) => undefined
+                    }
+                }
+            ]
+        }
+        /*{
+            type: "section",
             id: "Auto",
             header: "Auto",
             inputs: [
@@ -81,7 +100,7 @@ export const BSForm: Form = {
                     }
                 }
             ]
-        }
+        }*/
     ]
 }
 
