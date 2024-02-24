@@ -49,6 +49,3 @@
     </div>
     <ResponseList/>
 </div>
-
-<button on:click={() => goto("/test")} >Test</button>
-<p>response is {$response}</p>
