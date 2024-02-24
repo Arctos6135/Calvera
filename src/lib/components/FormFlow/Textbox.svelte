@@ -3,7 +3,6 @@
     import { getContext } from "svelte";
     import { activeResponses } from "$lib/store";
 
-    export let label: string | undefined = undefined;
     export let component: Textbox;
     export let tooLong: boolean = false;
     export let content: string = "";
@@ -28,12 +27,6 @@
 </script>
 
 <div>
-    {#if label != undefined}
-        <div
-            class="text-xl min-w-max mb-1"
-        >{label}</div>
-    {/if}
-
     <div class="flex relative">
         <textarea
             bind:value={$activeResponses[id].data[component.id]}

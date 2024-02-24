@@ -26,11 +26,12 @@
                 scout: $scout,
                 team: parseInt(team),
                 match: (formType.name == "Pit Scouting") ? null : parseInt(match),
-                alliance: $matches[parseInt(match)]?.red_alliance.includes(
-                    parseInt(team)
-                )
-                    ? "RED"
-                    : "BLUE",
+                // alliance: $matches[parseInt(match)]?.red_alliance.includes(
+                //     parseInt(team)
+                // )
+                //     ? "RED"
+                //     : "BLUE",
+                alliance: "BLUE"
             };
             $errors[id] = true;
             match = "";

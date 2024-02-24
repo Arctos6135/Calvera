@@ -7,7 +7,7 @@
 	import Textbox from "$lib/components/FormFlow/Textbox.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
     import ResponseList from "$lib/components/ResponseList.svelte";
-	import { matches } from "$lib/store";
+	import { matches, response, activeResponses } from "$lib/store";
 	import { onMount } from "svelte";
     import { BSForm, PSForm, SSForm } from "$lib/formLayout";
     import { goto } from "$app/navigation"
@@ -51,3 +51,4 @@
 </div>
 
 <button on:click={() => goto("/test")} >Test</button>
+<p>response is {$response}</p>

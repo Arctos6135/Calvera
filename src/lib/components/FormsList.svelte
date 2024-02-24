@@ -6,6 +6,7 @@
     const setResponse = (id: number) => {
         $response = id;
         goto("/form");
+        console.log($response)
     };
 
     $: responses = Object.values($activeResponses);

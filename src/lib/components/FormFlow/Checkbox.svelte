@@ -5,7 +5,6 @@
 
     export const id: number = getContext("id")
 
-    export let label = "Checkbox";
     export let component: Checkbox;
     export let checked = component.initialValue ?? false;
 
@@ -13,9 +12,6 @@
 </script>
 
 <div class="flex justify-between items-center my-2">
-    <span
-        class="text-xl min-w-max"
-    >{label}</span>
 
     <!-- Using a button instead of an input field because styling regular checkboxes is a pain -->
     <button

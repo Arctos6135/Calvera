@@ -1,15 +1,12 @@
 <script lang="ts">
-	import type { Component, Input } from "$lib/types";
+	import type { Input } from "$lib/types";
 	import Checkbox from "./Checkbox.svelte";
 	import Counter from "./Counter.svelte";
 	import Dropdown from "./Dropdown.svelte";
 	import Textbox from "./Textbox.svelte";
 
     export let group: Input;
-    let label = group.label;
 
-    let choice: string;
-    let content: string;
     let component = group.component as never;
 
     let components = {
@@ -21,5 +18,7 @@
 
     let Component = components[group.component.type];
 </script>
-
-<Component {component} {label} />
+<div>
+    <span>{group.label}</span>
+    <Component {component} />
+</div>
