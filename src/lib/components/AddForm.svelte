@@ -122,5 +122,4 @@
             on:click={onFormSubmit}
         >Create</button>
     </div>
-    <p>{parseInt(match)}</p>
 </div>

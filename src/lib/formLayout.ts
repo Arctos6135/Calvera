@@ -98,7 +98,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "auto stop",
-                        initialValue: 1
+                        initialValue: 0
                     }
                 }
             ]
