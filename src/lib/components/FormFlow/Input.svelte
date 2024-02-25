@@ -17,8 +17,9 @@
     };
 
     let Component = components[group.component.type];
+    export let error: string | undefined;
 </script>
 <div>
     <span>{group.label}</span>
-    <Component {component} />
+    <Component {component} bind:error/>
 </div>

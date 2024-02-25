@@ -7,6 +7,10 @@
 
     const id: number = getContext("id")
 
+    $: if ($activeResponses[id].data[component.id] === undefined) {
+        $activeResponses[id].data[component.id] = 0
+    }
+
     // Wrap the validator in another function
     // so we can update the error string in this 
     // which is returned by the validator component.

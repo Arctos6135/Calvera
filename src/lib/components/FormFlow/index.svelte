@@ -30,6 +30,8 @@
         goto("/", { replaceState: true });
     };
 
+    let errors: Record<string, string | undefined> = {};
+
     $: formType = $activeResponses[Number($response)].type.type
 
     $: setContext("id", $response)
@@ -44,7 +46,7 @@
         <hr class="text-text/50 mb-2" />
 
         {#each section.inputs as input}
-            <Input group={input} />
+            <Input group={input} bind:error={errors[input.component.id]}/>
         {/each}
 
 
