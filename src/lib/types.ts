@@ -1,6 +1,6 @@
 export type Response = {
     type: FormType,
-    data: Record<string, string | number>;
+    data: Record<string, string | number | boolean>;
     id: number;
     match: number | null;
     team: number;
@@ -54,7 +54,7 @@ export type Counter = {
 export type Checkbox = {
     type: "Checkbox",
     id: string,
-    initialValue?: boolean,
+    initialValue?: number,
 }
 
 export type Dropdown = {

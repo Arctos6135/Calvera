@@ -68,7 +68,7 @@ export const BSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "ground intake",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -77,7 +77,7 @@ export const BSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "source intake",
-                        initialValue: false
+                        initialValue: 0
                     }
                 }
             ]
@@ -98,7 +98,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "auto stop",
-                        initialValue: false
+                        initialValue: 1
                     }
                 }
             ]
@@ -114,7 +114,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "defended",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -123,7 +123,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "was defended",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -183,7 +183,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted park",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -192,7 +192,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted climb",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -201,7 +201,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted harmony",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -210,7 +210,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted trap",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -263,7 +263,7 @@ export const PSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "under stage",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
