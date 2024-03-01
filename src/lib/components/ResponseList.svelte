@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { deleteResponse, unsubmitResponse } from "$lib/actions";
-    import { responseQueue } from "$lib/store";
+    import { errors, responseQueue } from "$lib/store";
   
   </script>
 
@@ -31,6 +31,9 @@
                                 on:click={() => unsubmitResponse(response.id)}>✔ Unsubmit</button
                                 >
                             </span>
+                            {#if $errors[response.id]}
+                                <p>has errors</p>
+                            {/if}
                         </button>
                     </span>
                 </li>

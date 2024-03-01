@@ -8,12 +8,8 @@
     const id: number = getContext("id")
 
     $: if ($activeResponses[id].data[component.id] === undefined) {
-        $activeResponses[id].data[component.id] = 0
+        $activeResponses[id].data[component.id] = component.options[0]
     }
-
-    // Wrap the validator in another function
-    // so we can update the error string in this 
-    // which is returned by the validator component.
     export let error: string | undefined = undefined;
     
     // let runValidator = () => {
@@ -27,6 +23,7 @@
 
     // // Run the validator at least once before mount
     // runValidator();
+
 
 </script>
 

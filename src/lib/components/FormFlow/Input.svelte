@@ -5,9 +5,9 @@
 	import Dropdown from "./Dropdown.svelte";
 	import Textbox from "./Textbox.svelte";
 
-    export let group: Input;
+    export let input: Input;
 
-    let component = group.component as never;
+    let component = input.component as never;
 
     let components = {
         "Dropdown": Dropdown,
@@ -16,10 +16,10 @@
         "Textbox": Textbox,
     };
 
-    let Component = components[group.component.type];
+    let Component = components[input.component.type];
     export let error: string | undefined;
 </script>
 <div>
-    <span>{group.label}</span>
+    <span>{input.label}</span>
     <Component {component} bind:error/>
 </div>

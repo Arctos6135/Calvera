@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { activeResponses, response, responseQueue } from "$lib/store";
+	import { activeResponses, response, responseQueue, errors } from "$lib/store";
 	import type { Form } from "$lib/types";
 	import Input from "./Input.svelte";
     import { setContext } from "svelte";
     import { goto } from "$app/navigation";
+	import Section from "./Section.svelte";
 
     export let formType: Form;
 
@@ -30,29 +31,38 @@
         goto("/", { replaceState: true });
     };
 
-    let errors: Record<string, string | undefined> = {};
+    //Idk how this works I just copied it from polaris :)
+    //I think it just updates $error to be accurate based on whats in the error record created below
+    let error: Record<string, Record<string, string | undefined>> = {};
+    $: {
+        if ($response) {
+            $errors[$response] = Object.values(error).reduce(
+                (prev, cur) =>
+                    prev ||
+                    Object.values(cur).reduce(
+                        (prev, cur) => prev || cur != undefined,
+                        false
+                    ),
+                false
+            );
+        }
+    }
 
     $: formType = $activeResponses[Number($response)].type.type
 
     $: setContext("id", $response)
 </script>
 
-<div>
-    
+{#if $response}
+    <div>
+        
 
-    {#each formType.sections as section}
+        {#each formType.sections as section}       
+            <Section {section} bind:errors={error[section.id]} />
 
-        <span class="text-2xl text-text block mb-2 text-center font-bold">{section.header}</span>
-        <hr class="text-text/50 mb-2" />
-
-        {#each section.inputs as input}
-            <Input group={input} bind:error={errors[input.component.id]}/>
+            <div class="mt-5"></div>
         {/each}
-
-
-        <div class="mt-5"></div>
-    {/each}
-    <button on:click={() => submitResponse()}>Submit</button>
-    <button on:click={() => deleteResponse()}>Delete</button>
-</div> 
-
+        <button on:click={() => submitResponse()} disabled={$errors[$response]}>Submit</button>
+        <button on:click={() => deleteResponse()}>Delete</button>
+    </div> 
+{/if}

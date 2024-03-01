@@ -10,6 +10,7 @@
     }
 
     export let component: Checkbox;
+    export const error: string | undefined = undefined;
     $: checked = $activeResponses[id].data[component.id] == 1
 </script>
 
