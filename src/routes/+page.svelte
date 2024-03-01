@@ -7,9 +7,10 @@
 	import Textbox from "$lib/components/FormFlow/Textbox.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
     import ResponseList from "$lib/components/ResponseList.svelte";
-	import { matches, form } from "$lib/store";
+	import { matches, response, activeResponses } from "$lib/store";
 	import { onMount } from "svelte";
     import { BSForm, PSForm, SSForm } from "$lib/formLayout";
+    import { goto } from "$app/navigation"
 
     let choice = "a";
     let manual = false;

@@ -1,7 +1,7 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { deleteResponse, unsubmitResponse } from "$lib/actions";
-    import { responseQueue } from "$lib/store";
+    import { errors, responseQueue } from "$lib/store";
   
   </script>
 
@@ -13,8 +13,8 @@
                 <li>
                     <span>
                         <button class="flex-auto text-white text-left flex flex-col sm:block">
-                            <span class="font-normal text-gray-400">{response.type} Form</span>
-                            {#if response.type != "Pit Scouting"}
+                            <span class="font-normal text-gray-400">{response.type.name} Form</span>
+                            {#if response.type.name != "Pit Scouting"}
                             <!-- These two are wrapped in span because on mobile we want to display them on separate lines -->  
                                 <span class="sm:ml-5"><span class="font-normal text-gray-400">Match: </span><span class="">{response.match}</span></span>
                             {/if}
@@ -31,6 +31,9 @@
                                 on:click={() => unsubmitResponse(response.id)}>✔ Unsubmit</button
                                 >
                             </span>
+                            {#if $errors[response.id]}
+                                <p>has errors</p>
+                            {/if}
                         </button>
                     </span>
                 </li>

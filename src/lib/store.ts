@@ -2,15 +2,12 @@ import { writable } from "svelte/store";
 import type { Form, Response, Team, Match } from "$lib/types";
 import { persisted } from "../../node_modules/svelte-persisted-store/dist/index";
 
-//Details of which type of form is being used
-export const form = persisted<Form | null>("form", null);
-
 //for autofilling form creation data
 export const scout = persisted<string>("scout", "");
 export const teams = persisted<Record<number, Team>>("teams", {});
 export const matches = persisted<Record<number, Match>>("matches", {});
 
-//The currently active response (the one the user sees on the form page)
+//The id of the currently active response (the one the user sees on the form page)
 export const response = persisted<number | null>("response", null);
 
 //ID of the response we are displaying the QR code of
@@ -38,8 +35,7 @@ export const lastGet = persisted("lastGet", 0);
 //check is device connected to internet (writable only works online)
 export const online = writable(true);
 
-//colour theme stuff, not necessary
 export const theme = persisted("theme", "arctos");
 
-//looks like a list of IDs and boolean values for whether or not those forms have errors?
+//A list of IDs and boolean values for whether or not those forms have errors?
 export const errors = persisted<Record<number, boolean>>("errors", {});

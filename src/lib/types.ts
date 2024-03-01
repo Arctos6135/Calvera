@@ -1,8 +1,8 @@
 export type Response = {
-    type: string,
-    data: Record<string, string | number>;
+    type: FormType,
+    data: Record<string, string | number | boolean>;
     id: number;
-    match: number;
+    match: number | null;
     team: number;
     scout: string;
     alliance: "RED" | "BLUE";
@@ -54,7 +54,7 @@ export type Counter = {
 export type Checkbox = {
     type: "Checkbox",
     id: string,
-    initialValue?: boolean,
+    initialValue?: number,
 }
 
 export type Dropdown = {
@@ -80,4 +80,9 @@ export type Textbox = {
     type: "Textbox",
     id: string,
     maxLength?: number,
+}
+
+export type FormType = {
+    name: string,
+    type: Form
 }

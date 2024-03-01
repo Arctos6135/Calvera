@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Counter } from "$lib/types";
-    
-    export let label: string;
+    import { activeResponses } from "$lib/store";
+	import { getContext } from "svelte";
 
     // Set default values if fields are left as undefined
     export let component: Counter;
@@ -11,6 +11,10 @@
     const hasButtons = component.hasButtons ?? true;
 
     export let count = initialValue;
+    
+    export const id: number = getContext("id")
+
+    $: count = Number($activeResponses[id].data[component.id])
     
     // Count is considered to be valid if error
     // is undefined!
@@ -52,9 +56,6 @@
 
 <div class="my-2">
     <div class="block sm:flex items-center justify-between gap-2 ">
-        <span
-            class="text-xl min-w-max"
-        >{label}</span>
 
         <span class="grid grid-cols-counter grid-rows-1 gap-1 mt-1 sm:mt-0">
             <!-- Primary input fields -->
@@ -64,7 +65,7 @@
                 placeholder={initialValue.toString()}
                 min={min}
                 max={max}
-                bind:value={count}
+                bind:value={$activeResponses[id].data[component.id]}
                 on:blur={validateInput}
                 class="bg-primary rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
             />

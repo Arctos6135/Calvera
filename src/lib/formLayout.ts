@@ -1,4 +1,4 @@
-import type { Form } from "./types";
+import type { Form, FormType } from "./types";
 
 export const BSForm: Form = {
     sections: [
@@ -68,7 +68,7 @@ export const BSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "ground intake",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -77,7 +77,7 @@ export const BSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "source intake",
-                        initialValue: false
+                        initialValue: 0
                     }
                 }
             ]
@@ -98,7 +98,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "auto stop",
-                        initialValue: false
+                        initialValue: 0
                     }
                 }
             ]
@@ -114,7 +114,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "defended",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -123,7 +123,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "was defended",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -132,7 +132,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "level of failure",
-                        options: ["Minor", "Major", "Catastrophic"],
+                        options: ["None", "Minor", "Major", "Catastrophic"],
                         manual: false,
 
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -145,7 +145,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
-                        options: ["Yellow card", "Red card", "Disqualified"],
+                        options: ["None", "Yellow card", "Red card", "Disqualified"],
                         manual: false,
                         
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -183,7 +183,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted park",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -192,7 +192,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted climb",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -201,7 +201,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted harmony",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -210,7 +210,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "attempted trap",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -225,8 +225,8 @@ export const SSForm: Form = {
                 },
             ]
         }
-    ]
-}
+    ] 
+} 
 
 export const PSForm: Form = {
     sections: [
@@ -263,7 +263,7 @@ export const PSForm: Form = {
                     component: {
                         type: "Checkbox",
                         id: "under stage",
-                        initialValue: false
+                        initialValue: 0
                     }
                 },
                 {
@@ -339,3 +339,18 @@ export const PSForm: Form = {
         }
     ]
 }
+
+export const formTypes: FormType[] = [
+    {
+        name: "Scouting",
+        type: BSForm
+    },
+    {
+        name: "Super Scouting",
+        type: SSForm
+    },
+    {
+        name: "Pit Scouting",
+        type: PSForm
+    }
+]
