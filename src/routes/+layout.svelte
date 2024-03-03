@@ -1,11 +1,51 @@
 <script>
     import "../app.css";
-    import logo from "$lib/assets/arctos6135.png";
+    import logo from "/arctos6135.png";
 	import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
+	import { lastGet, responseQueue } from "$lib/store";
+	import { get, append } from "$lib/sheet";
+    //import { pwaInfo } from "virtual:pwa-info";
 
     const returnHome = () => {
         goto("/");
     }
+
+    // couldn't make this work, hopefully not necessary
+    // onMount(async () => {
+    // if (pwaInfo) {
+    //   const { registerSW } = await import("virtual:pwa-register");
+    //   registerSW({
+    //     immediate: true,
+    //     onRegistered(r) {
+    //       r && r.update();
+    //       console.log(`SW Registered: ${r}`);
+    //     },
+    //     onRegisterError(error) {
+    //       console.log("SW registration error", error);
+    //     },
+    //   });
+    // }
+
+    if (Date.now() - $lastGet > 60 * 60 * 1000) {
+        get();
+    }   
+
+    //Sends form to spreadsheet
+    function sync() {
+      setTimeout(async () => {
+        if ($responseQueue.length != 0) {
+          const ids = $responseQueue.map((response) => response.id);
+          if (await append($responseQueue)) {
+            $responseQueue = $responseQueue.filter(
+              (response) => !ids.includes(response.id)
+            );
+          }
+        }
+        sync();
+      }, 6000);
+    }
+    sync();
 </script>
 
 <nav
@@ -13,7 +53,8 @@
     >
     <button 
         on:click={returnHome}
-        ><img
+        >
+        <img
             src={logo}
             alt="Arctos logo"
             class="h-10"
@@ -25,6 +66,7 @@
         >Calvera
     </button>
 </nav>
+
 <main class="bg-background px-4">
     <slot />
 </main>
