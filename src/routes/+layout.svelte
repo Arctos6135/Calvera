@@ -1,6 +1,5 @@
 <script>
     import "../app.css";
-    import logo from "/arctos6135.png";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { lastGet, responseQueue } from "$lib/store";
@@ -12,6 +11,7 @@
     }
 
     // couldn't make this work, hopefully not necessary
+    // I think its just for image stuff?
     // onMount(async () => {
     // if (pwaInfo) {
     //   const { registerSW } = await import("virtual:pwa-register");
@@ -45,7 +45,7 @@
         sync();
       }, 6000);
     }
-    sync();
+    onMount(() => sync())
 </script>
 
 <nav
@@ -55,7 +55,7 @@
         on:click={returnHome}
         >
         <img
-            src={logo}
+            src={"./arctos6135.png"}
             alt="Arctos logo"
             class="h-10"
         />
