@@ -40,7 +40,8 @@ export const append = async (responseQueue: Response[]) => {
           response.match,
           response.scout,
           response.alliance,
-          ...getStore(keys).map((key) => response.data[key]),
+          response.type.name,
+          ...Object.keys(response.data).map((key: string) => response.data[key]),
           response.id,
         ])
       ),
