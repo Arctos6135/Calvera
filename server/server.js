@@ -34,11 +34,11 @@ function doGet() {
       teams: [],
     };
     response.matches = events
-      .getRange("D32:K187")
+      .getRange("B2:I1000")
       .getValues()
       .filter((lst) => lst[0] != "");
     response.teams = events
-      .getRange("R32:S")
+      .getRange("A2:A1000")
       .getValues()
       .filter((lst) => lst[0] != "");
 
