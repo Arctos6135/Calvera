@@ -30,7 +30,7 @@ export const BSForm: Form = {
                         min: 0
                     }
                     
-                },
+                }
             ]
         },
         {
@@ -169,7 +169,7 @@ export const SSForm: Form = {
                         id: "comments",
                         maxLength: 500
                     }
-                },
+                }
             ]
         },
         {
@@ -222,7 +222,7 @@ export const SSForm: Form = {
                         initialValue: 0,
                         hasButtons: false
                     }
-                },
+                }
             ]
         }
     ] 
@@ -334,7 +334,7 @@ export const PSForm: Form = {
                         id: "fave colour",
                         maxLength: 42
                     }
-                },
+                }
             ]
         }
     ]
