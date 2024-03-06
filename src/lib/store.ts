@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { derived, get, writable } from "svelte/store";
 import type { Form, Response, Team, Match } from "$lib/types";
 import { persisted } from "../../node_modules/svelte-persisted-store/dist/index";
 
@@ -39,3 +39,5 @@ export const theme = persisted("theme", "arctos");
 
 //A list of IDs and boolean values for whether or not those forms have errors?
 export const errors = persisted<Record<number, boolean>>("errors", {});
+
+export const formType = derived(response, ($response) => $response ? (get(activeResponses)[$response].type.type) : undefined)

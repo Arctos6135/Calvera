@@ -48,8 +48,6 @@
         }
     }
 
-    $: formType = $activeResponses[Number($response)].type.type
-
     $: setContext("id", $response)
 </script>
 
