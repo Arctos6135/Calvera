@@ -41,8 +41,8 @@ export const append = async (responseQueue: Response[]) => {
           response.scout,
           response.alliance,
           response.type.name,
-          ...Object.keys(response.data).map((key: string) => response.data[key]),
           response.id,
+          ...Object.keys(response.data).map((key: string) => response.data[key]),
         ])
       ),
       headers: {
