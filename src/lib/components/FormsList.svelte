@@ -5,7 +5,7 @@
 
     const setResponse = (id: number) => {
         $response = id;
-        goto("/sveltekit-github-pages/form");
+        goto("/sveltekit-github-pages/Calvera/form");
         console.log($response)
     };
 
