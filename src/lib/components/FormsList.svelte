@@ -6,8 +6,8 @@
 
     const setResponse = (id: number) => {
         $response = id;
-        goto(`${base}/form`);
-        //goto("form");
+        //goto(`${base}/form`);
+        goto("form");
         console.log($response)
     };
 
