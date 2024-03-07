@@ -2,10 +2,12 @@
     import { goto } from "$app/navigation";
     import { submitResponse, deleteResponse } from "$lib/actions";
     import { activeResponses, errors, response } from "$lib/store";
+    import { base } from "$app/paths";
 
     const setResponse = (id: number) => {
         $response = id;
-        goto("/Calvera/form");
+        goto(`${base}/form`);
+        //goto("form");
         console.log($response)
     };
 
