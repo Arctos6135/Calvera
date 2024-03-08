@@ -163,6 +163,15 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
+                    label: "Where do they shoot from?",
+                    component: {
+                        type: "Textbox",
+                        id: "shooting location",
+                        maxLength: 100
+                    }
+                },
+                {
+                    type: "input",
                     label: "Comments",
                     component: {
                         type: "Textbox",
