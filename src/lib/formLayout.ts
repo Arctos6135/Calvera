@@ -334,6 +334,15 @@ export const PSForm: Form = {
                         id: "fave colour",
                         maxLength: 42
                     }
+                },
+                {
+                    type: "input",
+                    label: "Comments",
+                    component: {
+                        type: "Textbox",
+                        id: "comments",
+                        maxLength: 200
+                    }
                 }
             ]
         }
