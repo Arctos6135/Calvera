@@ -5,7 +5,7 @@ export type Response = {
     match: number | null;
     team: number;
     scout: string;
-    alliance: "RED" | "BLUE";
+    alliance: "RED" | "BLUE" | "ERR";
 };
 
 export type Form = {

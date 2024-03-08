@@ -26,11 +26,11 @@
                 scout: $scout,
                 team: parseInt(team),
                 match: (formType.name == "Pit Scouting") ? null : parseInt(match),
-                alliance: $matches[parseInt(match)]?.red_alliance.includes(
-                    parseInt(team)
-                )
+                alliance: $matches[parseInt(match)]?.red_alliance.includes(parseInt(team)) 
                     ? "RED"
-                    : "BLUE",
+                    : ($matches[parseInt(match)]?.red_alliance.includes(parseInt(team)) 
+                        ? "BLUE" 
+                        : "ERR")
             };
             $errors[id] = true;
             match = "";
@@ -68,7 +68,11 @@
                 <input type="number" bind:value={match} class="rounded-md bg-background text-text border-2">
             {:else}
                 <!--Non-manual stuff below-->
-                <div class="text-error">Please change to manual</div>
+                <select bind:value={match} class="rounded-md bg-background text-text border-2">
+                    {#each Object.values($matches) as match}
+                        <option value={match.number}>{match.number}</option>
+                    {/each}
+                </select>
             {/if}
             {#if match == "" || match == null}
                 <div class="text-error">Need to choose a match</div>
@@ -81,7 +85,11 @@
             <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
         {:else}
             <!--Non-manual stuff below-->
-            <div class="text-error">Please change to manual</div>
+            <select bind:value={team} class="rounded-md bg-background text-text border-2">
+                {#each matchTeams as team}
+                    <option value={team.number}>{team.number}</option>
+                {/each}
+            </select>
         {/if}
         {#if team == "" || team == null}
             <div class="text-error">Need to choose a team</div>

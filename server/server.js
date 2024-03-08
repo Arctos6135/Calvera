@@ -28,6 +28,7 @@ function doGet() {
 
   try {
     const events = sheet.getSheetByName("Event Data");
+    const teams = sheet.getRangeByName("SetTeamNumberList")
     const response = {
       success: true,
       matches: [],
@@ -37,8 +38,7 @@ function doGet() {
       .getRange("B2:I1000")
       .getValues()
       .filter((lst) => lst[0] != "");
-    response.teams = events
-      .getRange("A2:A1000")
+    response.teams = teams
       .getValues()
       .filter((lst) => lst[0] != "");
 
