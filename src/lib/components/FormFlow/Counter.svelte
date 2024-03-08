@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Counter } from "$lib/types";
     import { activeResponses } from "$lib/store";
-	import { getContext } from "svelte";
+	import { getContext, onMount } from "svelte";
 
     // Set default values if fields are left as undefined
     export let component: Counter;
@@ -14,7 +14,13 @@
     
     export const id: number = getContext("id")
 
-    $: count = Number($activeResponses[id].data[component.id]) ?? 0
+    $: count = Number($activeResponses[id].data[component.id])
+
+    onMount( () => {
+        if (Number($activeResponses[id].data[component.id]) === undefined) {
+            $activeResponses[id].data[component.id] = 0;
+        }}
+    )
     
     // Count is considered to be valid if error
     // is undefined!

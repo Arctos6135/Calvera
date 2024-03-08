@@ -32,6 +32,8 @@
                         ? "BLUE" 
                         : "ERR")
             };
+            console.log(match)
+            console.log($matches[parseInt(match)])
             $errors[id] = true;
             match = "";
             team = "";
