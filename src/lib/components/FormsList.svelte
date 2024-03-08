@@ -45,9 +45,6 @@
                         disabled={$errors[response.id]}
                         on:click={() => submitResponse(response.id)}>✔ Submit</button
                     >
-                    {#if $errors[response.id]}
-                        <p>has errors</p>
-                    {/if}
                 </span>
             </li>
         {/each}
