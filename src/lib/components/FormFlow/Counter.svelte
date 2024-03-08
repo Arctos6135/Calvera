@@ -14,7 +14,7 @@
     
     export const id: number = getContext("id")
 
-    $: count = Number($activeResponses[id].data[component.id])
+    $: count = Number($activeResponses[id].data[component.id]) ?? 0
     
     // Count is considered to be valid if error
     // is undefined!
@@ -50,7 +50,7 @@
      * @param step the number count should be incremented by. Can be negative to decrement.
      */
     const incrementCount = (step = 1) => {
-        count = Math.max(min, Math.min(max, count + step));
+        $activeResponses[id].data[component.id] = Math.max(min, Math.min(max, Number($activeResponses[id].data[component.id]) + step));
     }
 </script>
 
