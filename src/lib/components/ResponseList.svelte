@@ -7,7 +7,7 @@
 
   <div>
     <span>
-        <hr/>
+        <hr class="mt-3"/>
         <ul>
             {#each $responseQueue as response (response.id)}
                 <li>

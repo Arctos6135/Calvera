@@ -6,7 +6,7 @@
 </script>
   
 <div class="flex flex-col">
-    <h2>{section.header}</h2>
+    <span class="text-xl font-bold mb-2 mt-1">{section.header}</span>
     {#each section.inputs as input (input)}
         <div>
             <Input bind:error={errors[input.component.id]} {input} />

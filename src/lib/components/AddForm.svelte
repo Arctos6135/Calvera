@@ -12,7 +12,7 @@
     let error: boolean;
 
     // This is called onFormSubmit but its really for creating a form
-    // Because youre submitting like a mini form with team and match number and stuff
+    // Because you're submitting like a mini form with team and match number and stuff
     function onFormSubmit() {
         if (!error) {
             // assigns it an ID and puts it in activeResponses
@@ -41,7 +41,7 @@
             team = "";
         } 
     }
-    let manual = true;
+    let manual = false;
 
     $: matchTeams = Object.values($teams).filter(
         (team) =>
@@ -54,7 +54,7 @@
 
 
 <div class="space-y-4">
-    <div class='flex flex-col'>
+    <div class='flex flex-col hidden'>
         <span class='text-text'>Form Type</span>
         <select bind:value={formType} class="rounded-md bg-background text-text border-2">
             {#each formTypes as formType}
@@ -65,7 +65,37 @@
             <div class="text-error">Need to choose a form type</div>
         {/if}
     </div>
-    <div>
+    <!--New components. Might have slight bugs?-->
+    <div class="my-2">
+        <div class="sm:flex justify-between items-center gap-2">
+            <span
+                class="text-xl min-w-max"
+            >Form Type</span>
+
+            <span
+                class="flex sm:inline mt-1 sm:mt-0">
+                <!-- Display the dropdown menu if manual is false -->
+                <select
+                    bind:value={formType}
+                    class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                >
+                    {#each formTypes as formType}
+                        <option
+                            class="cursor-pointer"
+                            value={formType}
+                        >{formType.name}</option>
+                    {/each}
+                </select>
+            </span>
+        </div>
+
+        {#if formType == null}
+            <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a form type</div>
+        {/if}
+    </div>
+    <!---->
+
+    <div class="hidden">
         {#if formType.name != "Pit Scouting"}
             <span class="text-text">Match</span>
             {#if manual}
@@ -83,7 +113,48 @@
             {/if}
         {/if}
     </div>
-    <div>
+
+    {#if formType.name != "Pit Scouting"}
+        <div class="my-2">
+            <div class="sm:flex justify-between items-center gap-2">
+                <span
+                    class="text-xl min-w-max"
+                >Match</span>
+
+                <span
+                    class="flex sm:inline mt-1 sm:mt-0">
+                <!-- Display the dropdown menu if manual is false -->
+                    {#if !manual}
+                        <select
+                            bind:value={match}
+                            class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                        >
+                            {#each Object.values($matches) as match}
+                                <option
+                                    class="cursor-pointer"
+                                    value={match.number}
+                                >{match.number}</option>
+                            {/each}
+                        </select>
+                    {:else}
+                    
+                        <!-- Display a text input field if manual is true -->
+                        <input
+                            type="text"
+                            bind:value={match}
+                            class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                        />
+                    {/if}
+                </span>
+            </div>
+        
+            {#if match == "" || match == null}
+                <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a match</div>
+            {/if}
+        </div>
+    {/if}
+
+    <div class="hidden">
         <span class="text-text">Team</span>
         {#if manual}
             <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
@@ -99,7 +170,46 @@
             <div class="text-error">Need to choose a team</div>
         {/if}
     </div>
-    <div>
+
+    <div class="my-2">
+        <div class="sm:flex justify-between items-center gap-2">
+            <span
+                class="text-xl min-w-max"
+            >Team</span>
+
+            <span
+                class="flex sm:inline mt-1 sm:mt-0">
+            <!-- Display the dropdown menu if manual is false -->
+                {#if !manual}
+                    <select
+                        bind:value={team}
+                        class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                    >
+                        {#each matchTeams as team}
+                            <option
+                                class="cursor-pointer"
+                                value={team.number}
+                            >{team.number}</option>
+                        {/each}
+                    </select>
+                {:else}
+                
+                    <!-- Display a text input field if manual is true -->
+                    <input
+                        type="text"
+                        bind:value={team}
+                        class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                    />
+                {/if}
+            </span>
+        </div>
+    
+        {#if team == "" || team == null}
+            <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a team</div>
+        {/if}
+    </div>
+
+    <div class="hidden">
         <span class="text-text">Scout name</span>
         <input type="text" bind:value={$scout} class="rounded-md bg-background text-text border-2">
         {#if $scout == ""}
@@ -107,18 +217,47 @@
         {/if}
     </div>
 
+    <div class="my-2">
+        <div class="sm:flex justify-between items-center gap-2">
+            <span
+                class="text-xl min-w-max"
+            >Scout Name</span>
+
+            <span
+                class="flex sm:inline mt-1 sm:mt-0">
+            <!-- Display the dropdown menu if manual is false -->
+                <input
+                    type="text"
+                    bind:value={$scout}
+                    class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                />
+            </span>
+        </div>
+    
+        {#if $scout == ""}
+            <div class="text-red-700 text-md font-bold w-max ml-[auto]">Scout needs a name</div>
+        {/if}
+    </div>
+
     <div class="ml-auto">
-        <label class="relative inline-flex items-center cursor-pointer">
-            <input
-                type="checkbox"
-                value=""
-                class="sr-only peer"
-                bind:checked={manual}
-            />
-            <div
-                class="w-[74px] h-[36px] bg-text/50 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[1px] after:left-[1px] peer-checked:after:left-[5px] after:bg-white after:rounded-full after:h-[34px] after:w-[34px] after:transition-all peer-checked:bg-primary focus:outline-none"
-            />
-            <span class="ml-1 text-text">Manual</span>
+        <label class="inline items-center cursor-pointer">
+            <div class="relative flex justify-between items-center gap-2">
+                <span
+                    class="text-xl min-w-max"
+                >Manual</span>
+                
+                <span>
+                    <input
+                        type="checkbox"
+                        value=""
+                        class="sr-only peer"
+                        bind:checked={manual}
+                    />
+                    <div
+                        class="w-[64px] h-[32px] bg-hover/50 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[1px] after:bg-white after:rounded-full after:h-[32px] after:w-[32px] after:transition-all peer-checked:bg-enabled focus:outline-none"
+                    />
+                </span>
+            </div>
         </label>
     </div>
 

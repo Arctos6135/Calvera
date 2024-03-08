@@ -28,21 +28,6 @@
 </script>
 
 <div class="md:max-w-[600px] mx-auto">
-    <!-- This is just some code to test the components -->
-    
-    <!-- <div>Current choice: {choice}</div>
-    <div>Checkbox is currently {enabled ? "enabled" : "disabled"}</div>
-    <button on:click={() => {manual = !manual;}}>Manual</button> -->
-
-    <!-- <div>The textbox says: {content}</div>
-    <Textbox label="An epic textbox" component={ { type: "Textbox", id: "13", maxLength: 10 } } bind:content />
-    <Counter label="An epic counter" component={ { id: "10", type: "Counter" } } /> -->
-
-    <!-- <Dropdown label="My very long dropdown" bind:choice={choice} component={ { id: "11", type:"Dropdown", options: ['a', 'b', 'c'], validator, manual } }/>
-    <Checkbox label="My checkbox" bind:enabled={enabled} component={ { type: "Checkbox", id:"12" } }/> -->
-
-    <!-- <FormFlow formType={PSForm}></FormFlow> -->
-
     <FormsList/>
     <div>
         <AddForm/>

@@ -22,6 +22,6 @@ import { page } from '$app/stores';
             class="font-bold"
             >Calvera
         </span>
-    </button>
+        </button>
     {/if}
 </div>

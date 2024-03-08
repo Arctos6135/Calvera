@@ -14,7 +14,7 @@
     $: checked = $activeResponses[id].data[component.id] == 1
 </script>
 
-<div class="flex justify-between items-center my-2">
+<div class="inline-flex justify-between items-center my-2">
 
     <!-- Using a button instead of an input field because styling regular checkboxes is a pain -->
     <button

@@ -6,7 +6,7 @@
     import { goto } from "$app/navigation";
 	import Section from "./Section.svelte";
 
-    export let formType: Form;
+    export let formType: Form | undefined;
 
         export const deleteResponse = () => {
         if (!$response) return;
@@ -53,20 +53,44 @@
 
 {#if $response}
     <div>
-        
+        {#if formType}
+            {#each formType.sections as section}       
+                <Section {section} bind:errors={error[section.id]} />
 
-        {#each formType.sections as section}       
-            <Section {section} bind:errors={error[section.id]} />
-
-            <div class="mt-5"></div>
-        {/each}
-        <button 
-            class="rounded-md p-2 shadow-sm border-2 bg-error/50 border-error hover:bg-error/40 text-text/80"
-            on:click={() => submitResponse()} disabled={$errors[$response]}
-        >Submit</button>
-        <button 
-            on:click={() => deleteResponse()}
-            class="rounded-md p-2 shadow-sm border-2 bg-success/50 border-success hover:bg-success/40 text-text/80 disabled:bg-success/10 disabled:border-success/20"
-        >Delete</button>
+                <div class="mt-5"></div>
+            {/each}
+            <!-- <button 
+                class="rounded-md p-2 shadow-sm border-2 bg-error/50 border-error hover:bg-error/40 text-text/80"
+                on:click={() => submitResponse()} disabled={$errors[$response]}
+            >Submit</button>
+            <button 
+                on:click={() => deleteResponse()}
+                class="rounded-md p-2 shadow-sm border-2 bg-success/50 border-success hover:bg-success/40 text-text/80 disabled:bg-success/10 disabled:border-success/20"
+            >Delete</button> -->
+            <div class="text-center">
+                <button
+                    class="button clickable text-xl !px-5 !py-2 !bg-enabled mr-3 !font-normal"
+                    on:click={() => deleteResponse()}>🗑️ Delete</button
+                ><button
+                    class="button clickable text-xl !px-5 !py-2 !bg-enabled ml-3 !font-normal"
+                    on:click={() => submitResponse()}>✔ Done</button
+                >
+            </div>
+        {:else}
+            <div class="text-center">
+                <div class="font-bold text-3xl mb-1 mt-12">No Valid Form</div>
+                <button
+                    on:click={() => goto("/")}
+                    class="button clickable mt-7"
+                ><span
+                    class="font-normal"
+                    >Return to
+                </span><span
+                    class="font-bold"
+                    >Calvera
+                </span>
+                </button>
+            </div>
+        {/if}
     </div> 
 {/if}

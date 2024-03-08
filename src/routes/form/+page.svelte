@@ -3,9 +3,11 @@
     import FormFlow from "$lib/components/FormFlow/index.svelte";
     import FormsList from "$lib/components/FormsList.svelte";
   </script>
-  
+
+<div class="md:max-w-[600px] mx-auto">
   {#if $response}
     <FormFlow formType={$formType} />
   {:else}
     <FormsList />
   {/if}
+</div>
