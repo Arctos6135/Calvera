@@ -28,12 +28,14 @@
                 match: (formType.name == "Pit Scouting") ? null : parseInt(match),
                 alliance: $matches[parseInt(match)]?.red_alliance.includes(parseInt(team)) 
                     ? "RED"
-                    : ($matches[parseInt(match)]?.red_alliance.includes(parseInt(team)) 
+                    : ($matches[parseInt(match)]?.blue_alliance.includes(parseInt(team)) 
                         ? "BLUE" 
                         : "ERR")
             };
-            console.log(match)
-            console.log($matches[parseInt(match)])
+            // console.log(`match: ${match}`)
+            // console.log(`matches[match]: ${$matches[parseInt(match)]}`)
+            // console.log(`red: ${$matches[parseInt(match)]?.red_alliance}`)
+            // console.log(`Blue: ${$matches[parseInt(match)]?.red_alliance}`)
             $errors[id] = true;
             match = "";
             team = "";
