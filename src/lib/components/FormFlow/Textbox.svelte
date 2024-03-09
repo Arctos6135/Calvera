@@ -30,7 +30,7 @@
     <div class="flex relative">
         <textarea
             bind:value={$activeResponses[id].data[component.id]}
-            class="flex-auto h-[20vh] min-h-16 max-h-[60vh] bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9 scroll scrollbar-thin scrollbar-thumb-enabled scrollbar-track-background"
+            class="flex-auto h-[20vh] my-2 min-h-16 max-h-[60vh] bg-primary w-64 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9 scroll scrollbar-thin scrollbar-thumb-enabled scrollbar-track-background"
         ></textarea>
         {#if component.maxLength!=null}
             <span 

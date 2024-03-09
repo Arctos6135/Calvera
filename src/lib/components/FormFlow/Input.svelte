@@ -21,7 +21,8 @@
 </script>
 
 <div 
-    class="sm:flex justify-between items-center gap-2"
+    class="justify-between items-center gap-2"
+    class:sm:flex={input.component.type != "Textbox"}
     class:flex={input.component.type == "Checkbox"}
     >
     <span
