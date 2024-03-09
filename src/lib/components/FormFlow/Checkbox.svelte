@@ -19,7 +19,7 @@
     <!-- Using a button instead of an input field because styling regular checkboxes is a pain -->
     <button
         on:click={() => {$activeResponses[id].data[component.id] = checked ? 0 : 1}} 
-        class="button clickable !px-2 !py-1.5 border-box border-3"
+        class="button clickable transition-all !px-2 !py-1.5 border-box border-3"
         class:!bg-enabled={checked}
         class:border-enabled={!checked}
         class:border-primary={checked}

@@ -54,7 +54,7 @@
 
 
 <div class="space-y-4">
-    <div class='flex flex-col hidden'>
+    <div class='flex-col hidden'>
         <span class='text-text'>Form Type</span>
         <select bind:value={formType} class="rounded-md bg-background text-text border-2">
             {#each formTypes as formType}
@@ -77,7 +77,7 @@
                 <!-- Display the dropdown menu if manual is false -->
                 <select
                     bind:value={formType}
-                    class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                    class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
                 >
                     {#each formTypes as formType}
                         <option
@@ -127,7 +127,7 @@
                     {#if !manual}
                         <select
                             bind:value={match}
-                            class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                            class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
                         >
                             {#each Object.values($matches) as match}
                                 <option
@@ -183,7 +183,7 @@
                 {#if !manual}
                     <select
                         bind:value={team}
-                        class="flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                        class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
                     >
                         {#each matchTeams as team}
                             <option
@@ -229,7 +229,7 @@
                 <input
                     type="text"
                     bind:value={$scout}
-                    class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                    class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
                 />
             </span>
         </div>

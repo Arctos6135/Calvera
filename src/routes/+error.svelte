@@ -14,7 +14,7 @@ import { page } from '$app/stores';
 
         <button
             on:click={() => goto("/")}
-            class="button clickable mt-5"
+            class="button clickable mt-5 transition-all"
         ><span
             class="font-normal"
             >Return to

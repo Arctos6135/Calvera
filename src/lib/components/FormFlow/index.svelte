@@ -8,7 +8,7 @@
 
     export let formType: Form | undefined;
 
-        export const deleteResponse = () => {
+    export const deleteResponse = () => {
         if (!$response) return;
         const res = $activeResponses;
         delete res[$response];
@@ -69,8 +69,9 @@
             >Delete</button> -->
             <div class="text-center">
                 <button
-                    class="button clickable text-xl !px-5 !py-2 !bg-enabled mr-3 !font-normal"
-                    on:click={() => deleteResponse()}>🗑️ Delete</button
+                    class="button clickable text-xl !px-5 !py-2 mr-3 !font-normal"
+                    class:!bg-enabled={!$errors[$response]}
+                    on:click={() => deleteResponse()} disabled={$errors[$response]}>🗑️ Delete</button
                 ><button
                     class="button clickable text-xl !px-5 !py-2 !bg-enabled ml-3 !font-normal"
                     on:click={() => submitResponse()}>✔ Done</button

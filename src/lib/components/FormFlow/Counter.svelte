@@ -69,11 +69,11 @@
             <!-- Add and subtract buttons -->
             <button
                 on:click={() => incrementCount(-1)}
-                class="button clickable"
+                class="button clickable transition-all"
             >-</button>
             <button
                 on:click={() => incrementCount(1)}
-                class="button clickable"
+                class="button clickable transition-all"
             >+</button>
         </span>
     </div>
