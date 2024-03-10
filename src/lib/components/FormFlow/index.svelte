@@ -59,14 +59,6 @@
 
                 <div class="mt-5"></div>
             {/each}
-            <!-- <button 
-                class="rounded-md p-2 shadow-sm border-2 bg-error/50 border-error hover:bg-error/40 text-text/80"
-                on:click={() => submitResponse()} disabled={$errors[$response]}
-            >Submit</button>
-            <button 
-                on:click={() => deleteResponse()}
-                class="rounded-md p-2 shadow-sm border-2 bg-success/50 border-success hover:bg-success/40 text-text/80 disabled:bg-success/10 disabled:border-success/20"
-            >Delete</button> -->
             <div class="text-center">
                 <button
                     class="button clickable text-xl !px-5 !py-2 mr-3 !font-normal"
