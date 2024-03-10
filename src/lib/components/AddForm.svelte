@@ -54,18 +54,6 @@
 
 
 <div class="space-y-4">
-    <div class='flex-col hidden'>
-        <span class='text-text'>Form Type</span>
-        <select bind:value={formType} class="rounded-md bg-background text-text border-2">
-            {#each formTypes as formType}
-                <option value={formType}>{formType.name}</option>
-            {/each}
-        </select>
-        {#if formType == null}
-            <div class="text-error">Need to choose a form type</div>
-        {/if}
-    </div>
-    <!--New components. Might have slight bugs?-->
     <div class="my-2">
         <div class="sm:flex justify-between items-center gap-2">
             <span
@@ -93,26 +81,6 @@
             <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a form type</div>
         {/if}
     </div>
-    <!---->
-
-    <div class="hidden">
-        {#if formType.name != "Pit Scouting"}
-            <span class="text-text">Match</span>
-            {#if manual}
-                <input type="number" bind:value={match} class="rounded-md bg-background text-text border-2">
-            {:else}
-                <!--Non-manual stuff below-->
-                <select bind:value={match} class="rounded-md bg-background text-text border-2">
-                    {#each Object.values($matches) as match}
-                        <option value={match.number}>{match.number}</option>
-                    {/each}
-                </select>
-            {/if}
-            {#if match == "" || match == null}
-                <div class="text-error">Need to choose a match</div>
-            {/if}
-        {/if}
-    </div>
 
     {#if formType.name != "Pit Scouting"}
         <div class="my-2">
@@ -135,6 +103,16 @@
                                     value={match.number}
                                 >{match.number}</option>
                             {/each}
+
+                            <option
+                                class="cursor-pointer"
+                                value={1}
+                            >{1}</option>
+
+                            <option
+                                class="cursor-pointer"
+                                value={2}
+                            >{2}</option>
                         </select>
                     {:else}
                     
@@ -154,66 +132,57 @@
         </div>
     {/if}
 
-    <div class="hidden">
-        <span class="text-text">Team</span>
-        {#if manual}
-            <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
-        {:else}
-            <!--Non-manual stuff below-->
-            <select bind:value={team} class="rounded-md bg-background text-text border-2">
-                {#each matchTeams as team}
-                    <option value={team.number}>{team.number}</option>
-                {/each}
-            </select>
-        {/if}
-        {#if team == "" || team == null}
-            <div class="text-error">Need to choose a team</div>
-        {/if}
-    </div>
-
     <div class="my-2">
         <div class="sm:flex justify-between items-center gap-2">
             <span
                 class="text-xl min-w-max"
             >Team</span>
 
-            <span
-                class="flex sm:inline mt-1 sm:mt-0">
-            <!-- Display the dropdown menu if manual is false -->
-                {#if !manual}
-                    <select
-                        bind:value={team}
-                        class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
-                    >
-                        {#each matchTeams as team}
+            <!-- The following if statements ensure that the 
+                team dropdown is only displayed if manual is 
+                enabled or a match is selected
+            -->
+            {#if (match == "" || match == null) && !manual}
+                <div class="text-red-700 text-md font-bold w-max ml-[auto]">Choose a match first</div>
+            {:else}
+                <span
+                    class="flex sm:inline mt-1 sm:mt-0">
+                <!-- Display the dropdown menu if manual is false -->
+                    {#if !manual}
+                        <select
+                            bind:value={team}
+                            class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
+                        >
+                            {#each matchTeams as team}
+                                <option
+                                    class="cursor-pointer"
+                                    value={team.number}
+                                >{team.number}</option>
+                            {/each}
                             <option
                                 class="cursor-pointer"
-                                value={team.number}
-                            >{team.number}</option>
-                        {/each}
-                    </select>
-                {:else}
-                
-                    <!-- Display a text input field if manual is true -->
-                    <input
-                        type="text"
-                        bind:value={team}
-                        class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
-                    />
-                {/if}
-            </span>
+                                value={6135}
+                            >{6135}</option>
+                            <option
+                                class="cursor-pointer"
+                                value={1310}
+                            >{1310}</option>
+                        </select>
+                    {:else}
+                    
+                        <!-- Display a text input field if manual is true -->
+                        <input
+                            type="text"
+                            bind:value={team}
+                            class="flex-auto sm:inline bg-primary w-80 md:w-96 rounded-xl px-4 py-2 text-white remove-arrow focus:drop-shadow-btn-hover min-w-9"
+                        />
+                    {/if}
+                </span>
+            {/if}
         </div>
     
-        {#if team == "" || team == null}
+        {#if (team == "" || team == null) && (manual || (match != "" && match != null))}
             <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a team</div>
-        {/if}
-    </div>
-
-    <div class="hidden">
-        <span class="text-text">Scout name</span>
-        <input type="text" bind:value={$scout} class="rounded-md bg-background text-text border-2">
-        {#if $scout == ""}
-            <div class="text-error">Scout needs a name</div>
         {/if}
     </div>
 
@@ -271,5 +240,64 @@
             disabled={error}
             on:click={onFormSubmit}
         >Create</button>
+    </div>
+
+    <!-- The following divs have all been replaced by a newer design -->
+    <div class="hidden">
+        <div class='flex-col hidden'>
+            <span class='text-text'>Form Type</span>
+            <select bind:value={formType} class="rounded-md bg-background text-text border-2">
+                {#each formTypes as formType}
+                    <option value={formType}>{formType.name}</option>
+                {/each}
+            </select>
+            {#if formType == null}
+                <div class="text-error">Need to choose a form type</div>
+            {/if}
+        </div>
+
+        <div class="hidden">
+            {#if formType.name != "Pit Scouting"}
+                <span class="text-text">Match</span>
+                {#if manual}
+                    <input type="number" bind:value={match} class="rounded-md bg-background text-text border-2">
+                {:else}
+                    <!--Non-manual stuff below-->
+                    <select bind:value={match} class="rounded-md bg-background text-text border-2">
+                        {#each Object.values($matches) as match}
+                            <option value={match.number}>{match.number}</option>
+                        {/each}
+                    </select>
+                {/if}
+                {#if match == "" || match == null}
+                    <div class="text-error">Need to choose a match</div>
+                {/if}
+            {/if}
+        </div>
+
+        <div class="hidden">
+            <span class="text-text">Team</span>
+            {#if manual}
+                <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
+            {:else}
+                <!--Non-manual stuff below-->
+                <select bind:value={team} class="rounded-md bg-background text-text border-2">
+                    {#each matchTeams as team}
+                        <option value={team.number}>{team.number}</option>
+                    {/each}
+                </select>
+            {/if}
+            {#if team == "" || team == null}
+                <div class="text-error">Need to choose a team</div>
+            {/if}
+        </div>
+
+        <div class="hidden">
+            <span class="text-text">Scout name</span>
+            <input type="text" bind:value={$scout} class="rounded-md bg-background text-text border-2">
+            {#if $scout == ""}
+                <div class="text-error">Scout needs a name</div>
+            {/if}
+        </div>
     </div>
 </div>
