@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { activeResponses, teams, matches, scout, errors } from "$lib/store";
+    import { activeResponses, teams, matches, scout, errors, manualSubmission } from "$lib/store";
     import { randomID } from "$lib/id";
 	import Checkbox from "./FormFlow/Checkbox.svelte";
     import { formTypes } from "$lib/formLayout";
@@ -41,7 +41,6 @@
             team = "";
         } 
     }
-    let manual = false;
 
     $: matchTeams = Object.values($teams).filter(
         (team) =>
@@ -92,7 +91,7 @@
                 <span
                     class="flex sm:inline mt-1 sm:mt-0">
                 <!-- Display the dropdown menu if manual is false -->
-                    {#if !manual}
+                    {#if !$manualSubmission}
                         <select
                             bind:value={match}
                             class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
@@ -142,13 +141,13 @@
                 team dropdown is only displayed if manual is 
                 enabled or a match is selected
             -->
-            {#if (match == "" || match == null) && !manual}
-                <div class="text-red-700 text-md font-bold w-max ml-[auto]">Choose a match first</div>
+            {#if (match == "" || match == null) && !$manualSubmission}
+                <div class="text-red-700 text-md font-bold w-max ml-[auto]">Must choose a match first</div>
             {:else}
                 <span
                     class="flex sm:inline mt-1 sm:mt-0">
                 <!-- Display the dropdown menu if manual is false -->
-                    {#if !manual}
+                    {#if !$manualSubmission}
                         <select
                             bind:value={team}
                             class="transition-all flex-auto sm:inline bg-primary w-80 md:w-96 min-w-max rounded-xl px-4 py-2 text-white remove-arrow cursor-pointer hover:bg-hover hover:drop-shadow-btn-hover"
@@ -181,7 +180,7 @@
             {/if}
         </div>
     
-        {#if (team == "" || team == null) && (manual || (match != "" && match != null))}
+        {#if (team == "" || team == null) && ($manualSubmission || (match != "" && match != null))}
             <div class="text-red-700 text-md font-bold w-max ml-[auto]">Need to choose a team</div>
         {/if}
     </div>
@@ -220,7 +219,7 @@
                         type="checkbox"
                         value=""
                         class="sr-only peer"
-                        bind:checked={manual}
+                        bind:checked={$manualSubmission}
                     />
                     <div
                         class="w-[64px] h-[32px] bg-hover/50 rounded-full peer peer-checked:after:translate-x-full after:absolute after:top-[1px] after:bg-white after:rounded-full after:h-[32px] after:w-[32px] after:transition-all peer-checked:bg-enabled focus:outline-none"
@@ -259,7 +258,7 @@
         <div class="hidden">
             {#if formType.name != "Pit Scouting"}
                 <span class="text-text">Match</span>
-                {#if manual}
+                {#if $manualSubmission}
                     <input type="number" bind:value={match} class="rounded-md bg-background text-text border-2">
                 {:else}
                     <!--Non-manual stuff below-->
@@ -277,7 +276,7 @@
 
         <div class="hidden">
             <span class="text-text">Team</span>
-            {#if manual}
+            {#if $manualSubmission}
                 <input type="number" bind:value={team} class="rounded-md bg-background text-text border-2">
             {:else}
                 <!--Non-manual stuff below-->

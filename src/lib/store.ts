@@ -4,6 +4,7 @@ import { persisted } from "../../node_modules/svelte-persisted-store/dist/index"
 
 //for autofilling form creation data
 export const scout = persisted<string>("scout", "");
+export const manualSubmission = persisted<boolean>("manualSubmission", false);
 export const teams = persisted<Record<number, Team>>("teams", {});
 export const matches = persisted<Record<number, Match>>("matches", {});
 
