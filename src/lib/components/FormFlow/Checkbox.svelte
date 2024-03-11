@@ -3,7 +3,7 @@
     import type { Checkbox } from "$lib/types";
 	import { getContext } from "svelte";
 
-    export const id: number = getContext("id")
+    const id: number = getContext("id")
 
     $: if ($activeResponses[id].data[component.id] === undefined) {
         $activeResponses[id].data[component.id] = component.initialValue ?? 0;

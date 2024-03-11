@@ -103,7 +103,8 @@
                                 >{match.number}</option>
                             {/each}
 
-                            <option
+                            <!-- Testing Options -->
+                            <!-- <option
                                 class="cursor-pointer"
                                 value={1}
                             >{1}</option>
@@ -111,7 +112,7 @@
                             <option
                                 class="cursor-pointer"
                                 value={2}
-                            >{2}</option>
+                            >{2}</option> -->
                         </select>
                     {:else}
                     
@@ -141,8 +142,8 @@
                 team dropdown is only displayed if manual is 
                 enabled or a match is selected
             -->
-            {#if (match == "" || match == null) && !$manualSubmission}
-                <div class="text-red-700 text-md font-bold w-max ml-[auto]">Must choose a match first</div>
+            {#if (match == "" || match == null) && !$manualSubmission && formType.name != "Pit Scouting"}
+                <div class="text-red-700 text-md font-bold w-max ml-[auto] inline float-right">Must choose a match first</div>
             {:else}
                 <span
                     class="flex sm:inline mt-1 sm:mt-0">
@@ -158,14 +159,15 @@
                                     value={team.number}
                                 >{team.number}</option>
                             {/each}
-                            <option
+                            <!-- Testing Options -->
+                            <!-- <option
                                 class="cursor-pointer"
                                 value={6135}
                             >{6135}</option>
                             <option
                                 class="cursor-pointer"
                                 value={1310}
-                            >{1310}</option>
+                            >{1310}</option> -->
                         </select>
                     {:else}
                     

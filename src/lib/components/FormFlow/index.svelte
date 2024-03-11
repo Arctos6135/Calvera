@@ -69,6 +69,8 @@
                     on:click={() => submitResponse()}>✔ Done</button
                 >
             </div>
+
+            <div class="text-center text-gray-400 text-xs my-4">Saved automatically</div>
         {:else}
             <div class="text-center">
                 <div class="font-bold text-3xl mb-1 mt-12">No Valid Form</div>
