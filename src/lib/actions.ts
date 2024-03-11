@@ -1,5 +1,6 @@
 import { get } from "svelte/store";
-import { activeResponses, response, responseQueue } from "$lib/store";
+import { activeResponses, response, responseQueue} from "$lib/store";
+import { goto } from "$app/navigation";
 
 export const deleteResponse = (id: number) => {
     const responses = get(activeResponses);
@@ -28,3 +29,7 @@ export const submitResponse = (id: number) => {
     activeResponses.set(responses);
   }
   
+export const setResponse = (id: number) => {
+  response.set(id);
+  goto("/form");
+};

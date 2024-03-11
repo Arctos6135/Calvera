@@ -4,6 +4,7 @@
 	import Checkbox from "./FormFlow/Checkbox.svelte";
     import { formTypes } from "$lib/formLayout";
 	import type { FormType } from "$lib/types";
+	import { setResponse } from "$lib/actions";
 
     let team = "";
     let match = "";
@@ -39,6 +40,8 @@
             $errors[id] = true;
             match = "";
             team = "";
+            
+            setResponse(id);
         } 
     }
 

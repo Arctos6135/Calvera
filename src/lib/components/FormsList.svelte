@@ -1,15 +1,15 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { submitResponse, deleteResponse } from "$lib/actions";
+    import { submitResponse, deleteResponse, setResponse } from "$lib/actions";
     import { activeResponses, errors, response } from "$lib/store";
     import { base } from "$app/paths";
 
-    const setResponse = (id: number) => {
-        $response = id;
-        //goto(`${base}/form`);
-        goto("form");
-        console.log($response)
-    };
+    // const setResponse = (id: number) => {
+    //     $response = id;
+    //     //goto(`${base}/form`);
+    //     goto("/form");
+    //     console.log($response)
+    // };
 
     $: responses = Object.values($activeResponses);
 </script>
