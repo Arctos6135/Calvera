@@ -61,12 +61,14 @@
             {/each}
             <div class="text-center">
                 <button
-                    class="button clickable text-xl !px-5 !py-2 mr-3 !font-normal"
-                    class:!bg-enabled={!$errors[$response]}
-                    on:click={() => deleteResponse()} disabled={$errors[$response]}>🗑️ Delete</button
+                    class="button clickable text-xl !px-5 !py-2 !bg-enabled mr-3 !font-normal"
+                    on:click={() => deleteResponse()}>🗑️ Delete</button
                 ><button
-                    class="button clickable text-xl !px-5 !py-2 !bg-enabled ml-3 !font-normal"
-                    on:click={() => submitResponse()}>✔ Done</button
+                    class="button text-xl !px-5 !py-2 ml-3 !font-normal"
+                    class:clickable={!$errors[$response]}
+                    class:!bg-enabled={!$errors[$response]}
+                    disabled={$errors[$response]}
+                    on:click={() => goto("/")}>✔ Done</button
                 >
             </div>
 
