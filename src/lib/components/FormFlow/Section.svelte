@@ -10,7 +10,7 @@
 </script>
   
 <div class="flex flex-col">
-    <span class="text-xl font-bold mb-2 mt-1">{section.header}</span>
+    <span class="text-xl font-bold mb-2 mt-1 text-center">{section.header}</span>
     {#each section.inputs as input (input)}
         <div>
             {#if !(input.component.id == "serious foul reason") || ($activeResponses[id].data["serious foul"] != "None")}

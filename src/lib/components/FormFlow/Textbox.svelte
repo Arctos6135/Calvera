@@ -8,7 +8,7 @@
     export let content: string = "";
     const id: number = getContext("id")
 
-    $: content = String($activeResponses[id].data[component.id])
+    $: content = String($activeResponses[id].data[component.id] || "");
 
     let wordLength = 0;
 
