@@ -56,6 +56,9 @@
 
 
 <div class="space-y-4">
+    <div class="text-2xl text-text block font-bold text-center">Create Form</div>
+    <hr class="text-text/50 mb-2" style="margin-top: 8px" />
+
     <div class="my-2">
         <div class="sm:flex justify-between items-center gap-2">
             <span
@@ -236,7 +239,7 @@
 
     <div class="flex px-20 mt-3">
         <button 
-            class="button flex-auto"
+            class="button flex-auto mb-5"
             class:clickable={!error}
             class:!bg-disabled={error}
             class:!text-gray-500={error}
