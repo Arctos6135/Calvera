@@ -10,6 +10,7 @@ export const BSForm: Form = {
                 {
                     type: "input",
                     label: "Score amp",
+                    tooltip: "The number of notes scored in the amp",
                     component: {
                         type: "Counter",
                         id: "auto score amp",
@@ -17,11 +18,11 @@ export const BSForm: Form = {
                         initialValue: 0,
                         min: 0
                     }
-                    
                 },
                 {
                     type: "input",
                     label: "Score speaker",
+                    tooltip: "The number of notes scored in the speaker",
                     component: {
                         type: "Counter",
                         id: "auto score speaker",
@@ -41,6 +42,7 @@ export const BSForm: Form = {
                 {
                     type: "input",
                     label: "Score amp",
+                    tooltip: "The number of notes scored in the amp",
                     component: {
                         type: "Counter",
                         id: "teleop score amp",
@@ -53,6 +55,7 @@ export const BSForm: Form = {
                 {
                     type: "input",
                     label: "Score speaker",
+                    tooltip: "The number of notes scored in the speaker",
                     component: {
                         type: "Counter",
                         id: "teleop score speaker",
@@ -65,6 +68,7 @@ export const BSForm: Form = {
                 {
                     type: "input",
                     label: "Ground intake",
+                    tooltip: "The number of notes intaked off the ground",
                     component: {
                         type: "Checkbox",
                         id: "ground intake",
@@ -73,6 +77,7 @@ export const BSForm: Form = {
                 },
                 {
                     type: "input",
+                    tooltip: "The number of notes intaked from the source locations",
                     label: "Source (not ground) intake",
                     component: {
                         type: "Checkbox",
@@ -95,6 +100,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Used Auto stop?",
+                    tooltip: "Auto stop refers to the A-STOP (i.e. the emergency stop for the autonomous period)",
                     component: {
                         type: "Checkbox",
                         id: "auto stop",
@@ -111,6 +117,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Did defend?",
+                    tooltip: "Did the robot defend another robot?",
                     component: {
                         type: "Checkbox",
                         id: "defended",
@@ -120,6 +127,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Was defended?",
+                    tooltip: "Was the robot defended by another robot?",
                     component: {
                         type: "Checkbox",
                         id: "was defended",
@@ -129,6 +137,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Level of failure",
+                    tooltip: "Minor: small components breaking, nothing game-changing.\nMajor: important components broken, robot tipped, etc. Disrupts the team's ability to play the match effectively or participate at all.\nCatastrophic: failuires that render the team unable to compete for the entire season.",
                     component: {
                         type: "Dropdown",
                         id: "level of failure",
@@ -225,6 +234,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Climb time",
+                    tooltip: "The number of seconds the robot took to climb.",
                     component: {
                         type: "Counter",
                         id: "climb time",
@@ -337,7 +347,8 @@ export const PSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Robots favourite colour",
+                    label: "Robot's favourite colour",
+                    tooltip: "Most important question.",
                     component: {
                         type: "Textbox",
                         id: "fave colour",

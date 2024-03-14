@@ -22,6 +22,7 @@ export type Section = {
 export type Input = {
     type: "input";
     label: string;
+    tooltip?: string;
     component: Component;
 };
 
