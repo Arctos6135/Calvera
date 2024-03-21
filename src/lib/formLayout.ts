@@ -182,6 +182,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Comments",
+                    tooltip: "Did the team get a lot of fouls (touched opposing robots in opposing alliance’s source, amp, stage during last 20 seconds)\nHow good against defense?\nHow efficient at amp versus speaker (which seems to be easier for them)\nPath of travel\nAccuracy of shots?\nAny weird things that happened (robot put note in opposing alliance’s amp)",
                     component: {
                         type: "Textbox",
                         id: "comments",
