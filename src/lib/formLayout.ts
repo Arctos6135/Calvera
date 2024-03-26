@@ -150,7 +150,8 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Serious foul?",
+                    label: "Fouls?",
+                    tooltip: "Select the worst foul received during the match",
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
@@ -163,11 +164,12 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Reason for serious foul?",
+                    label: "Reason for fouls?",
+                    tooltip: "Detail the number of each type of foul and why they received each one",
                     component: {
                         type: "Textbox",
                         id: "serious foul reason",
-                        maxLength: 100
+                        maxLength: 250
                     }
                 },
                 {
