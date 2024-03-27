@@ -155,7 +155,7 @@ export const SSForm: Form = {
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
-                        options: ["None", "Yellow card", "Red card", "Disqualified"],
+                        options: ["None", "Foul", "Tech fouls", "Yellow card", "Red card", "Disqualified"],
                         manual: false,
                         
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -164,7 +164,7 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Reason for fouls?",
+                    label: "Foul details",
                     tooltip: "Detail the number of each type of foul and why they received each one",
                     component: {
                         type: "Textbox",
