@@ -173,6 +173,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Where do they shoot from?",
+                    tooltip: "Describe relative to other field elements in as much detail as possible. Not distance",
                     component: {
                         type: "Textbox",
                         id: "shooting location",
