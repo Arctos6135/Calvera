@@ -150,11 +150,12 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Serious foul?",
+                    label: "Fouls?",
+                    tooltip: "Select the worst foul received during the match",
                     component: {
                         type: "Dropdown",
                         id: "serious foul",
-                        options: ["None", "Yellow card", "Red card", "Disqualified"],
+                        options: ["None", "Foul", "Tech fouls", "Yellow card", "Red card", "Disqualified"],
                         manual: false,
                         
                         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -163,11 +164,12 @@ export const SSForm: Form = {
                 },
                 {
                     type: "input",
-                    label: "Reason for serious foul?",
+                    label: "Foul details",
+                    tooltip: "Detail the number of each type of foul and why they received each one",
                     component: {
                         type: "Textbox",
                         id: "serious foul reason",
-                        maxLength: 100
+                        maxLength: 250
                     }
                 },
                 {
@@ -183,6 +185,7 @@ export const SSForm: Form = {
                 {
                     type: "input",
                     label: "Comments",
+                    tooltip: "Did the team get a lot of fouls (touched opposing robots in opposing alliance’s source, amp, stage during last 20 seconds)\nHow good against defense?\nHow efficient at amp versus speaker (which seems to be easier for them)\nPath of travel\nAccuracy of shots?\nAny weird things that happened (robot put note in opposing alliance’s amp)",
                     component: {
                         type: "Textbox",
                         id: "comments",
