@@ -1,6 +1,6 @@
 <script>
   import "../app.css";
-	import { goto } from "$app/navigation";
+	import { goto, preloadCode, preloadData } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { lastGet, responseQueue } from "$lib/store";
 	import { get, append } from "$lib/sheet";
@@ -44,7 +44,11 @@
         sync();
       }, 6000);
     }
-    onMount(() => sync())
+    onMount(() => {
+      sync();
+      preloadData("/form");
+      preloadCode("/form");
+    })
 </script>
 
 <nav
